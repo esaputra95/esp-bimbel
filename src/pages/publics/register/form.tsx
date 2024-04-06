@@ -22,16 +22,16 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
     const {t} = useTranslation()
 
     return (
-        <div className='w-full min-h-screen bg-gray-100 py:2 xl:py-4 lg:py-4 md:py-4'>
-            <div className='xl:flex lg:flex md:flex justify-center w-10/12 bg-white p-2 xl:p-8 lg:p-8 md:p-8  m-auto space-x-4 rounded-md mb-4'>
-                <img src="https://api.espbimbel.com/images/images_1712021986835.png" className='h-16 w-16' alt="Logo" />
-                <div className='w-full flex flex-col'>
+        <div className='w-full min-h-screen bg-gray-100 '>
+            <div className='xl:flex lg:flex md:flex justify-center w-10/12 bg-white xl:p-8 lg:p-8 md:p-8  m-auto space-x-4 rounded-md mb-4'>
+                <img src="https://api.espbimbel.com/images/images_1712021986835.png" className='ml-4 md:ml-0 h-16 w-16' alt="Logo" />
+                <div className='w-10/12 flex flex-col'>
                     <span className='w-full text-3xl font-bold text-left'>Halaman Pendaftaran ESP BIMBEL</span>
                     <span className='w-full text-xl font-semibold text-left'>Tahun Ajaran 2024/2025</span>
                     <span className='w-full text-left font-light'>Harap mengisi seluruh form dengan baik dan benar</span>
                 </div>
             </div>
-            <div className='flex flex-col bg-white w-10/12 m-auto min-h-full py-8 px-8'>
+            <div className='flex flex-col bg-white w-10/12 m-auto min-h-full py-8 px-2 md:px-8'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-12">
                         <div className="border-b border-gray-900/10 pb-12">
@@ -49,7 +49,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         label={t("name")} 
                                     />
                                 </div>
-                                <div className="sm:col-span-3">
+                                <div className="sm:col-span-3 w-full md:w-4/12">
                                     <SelectOption 
                                         {...register('gender')}
                                         name='gender'
@@ -58,7 +58,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         option={[{value:'laki_laki', label:'Lak-Laki'}, {value:'perempuan', label:'Perempuan'}]}
                                     />
                                 </div>
-                                <div className="sm:col-span-4 w-4/12">
+                                <div className="w-full sm:col-span-4 md:w-4/12">
                                     <label htmlFor="phone-input">{t("phone")+" Whatsapp (6282345678901)"}</label>
                                     <Controller
                                         name="phone"
@@ -80,21 +80,21 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                     />
                                     <p className="error-message">{errors?.phone?.message}</p>
                                 </div>
-                                <div className="sm:col-span-4 w-6/12">
+                                <div className="w-full sm:col-span-4 md:w-6/12">
                                     <InputText
                                         {...register("school")}
                                         errors={errors?.school?.message} 
                                         label={t("school")} 
                                     />
                                 </div>
-                                <div className="sm:col-span-4 w-6/12">
+                                <div className="w-full sm:col-span-4 md:w-6/12">
                                     <InputText
                                         {...register("placeBirth")}
                                         errors={errors?.placeBirth?.message} 
                                         label={t("place-birth")} 
                                     />
                                 </div>
-                                <div className="sm:col-span-4 w-4/12">
+                                <div className="w-full sm:col-span-4 md:w-6/12">
                                     <InputText
                                         {...register("dateBirth")}
                                         errors={errors?.dateBirth?.message} 
@@ -103,7 +103,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                     />
                                 </div>
 
-                                <div className="sm:col-span-4 w-8/12">
+                                <div className="w-full sm:col-span-4 md:w-8/12">
                                     <InputText
                                         {...register("email")}
                                         errors={errors?.email?.message} 
@@ -111,7 +111,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         label={t("email")} 
                                     />
                                 </div>
-                                <div className="sm:col-span-4 w-6/12">
+                                <div className="w-full sm:col-span-4 md:w-6/12">
                                     <InputText
                                         {...register("classGrade")}
                                         errors={errors?.classGrade?.message} 
@@ -138,7 +138,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         Tulis alamat dengan lengkap, agar memudahkan dalam pengiriman modul belajar
                                     </p>
                                 </div>
-                                <div className='w-full grid grid-cols-3 gap-2'>
+                                <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-2'>
                                     <InputText
                                         {...register("country")}
                                         errors={errors?.country?.message} 
@@ -204,7 +204,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                 Mohon untuk mengisi semua form dengan baik ban benar
                             </p>
                             <div className="mt-10 w-full space-y-8 sm:grid-cols-6">
-                                <div className='w-5/12'>
+                                <div className='w-full md:w-5/12'>
                                     <SelectAutoComplete 
                                         control={control}
                                         errors={errors}
@@ -213,7 +213,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         label={t("session-quantities")}
                                     />
                                 </div>
-                                <div className='w-5/12'>
+                                <div className='w-full md:w-5/12'>
                                     <SelectAutoComplete 
                                         control={control}
                                         errors={errors}
@@ -257,12 +257,12 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                         >
                                             <option></option>
-                                            <option>Online</option>
-                                            <option>Offline </option>
+                                            <option value='online'>Online</option>
+                                            <option value='offline'>Offline </option>
                                         </select>
                                     </div>
                                 </div>
-                                <div className='w-5/12'>
+                                <div className='w-full md:w-5/12'>
                                     <SelectAutoComplete 
                                         control={control}
                                         errors={errors}
@@ -274,7 +274,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         {errors?.packageId?.message}
                                     </label>
                                 </div>
-                                <div className="sm:col-span-4 w-6/12">
+                                <div className="w-full sm:col-span-4 md:w-6/12">
                                     <InputText
                                         {...register('studyProgram')}
                                         label={t('studyProgram')}
@@ -284,7 +284,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         {errors?.studyProgram?.message}
                                     </label>
                                 </div>
-                                <div className="sm:col-span-4 w-6/12">
+                                <div className="sm:col-span-4 w-full md:w-6/12">
                                     <InputText
                                         {...register('university')}
                                         label={t('university')}
@@ -305,7 +305,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                 Mohon untuk mengisi semua form dengan baik ban benar
                             </p>
                             <div className="mt-10 w-full space-y-8 sm:grid-cols-6">
-                                <div className="sm:col-span-4 w-8/12">
+                                <div className="sm:col-span-4 w-full md:w-8/12">
                                     <InputText
                                         {...register('parentName')}
                                         label={t('parent-name')}
@@ -321,7 +321,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         type='text'
                                     />
                                 </div> */}
-                                <div className="sm:col-span-4 w-4/12">
+                                <div className="sm:col-span-4 w-full md:w-4/12">
                                     <label htmlFor="phone-input">{t("parent-phone")}</label>
                                     <Controller
                                         name="parentPhone"
@@ -352,7 +352,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                         />
                     </div>
 
-                    <div className="mt-6 flex items-center justify-end gap-x-6">
+                    <div className="mt-6 flex items-center justify-between md:justify-end gap-x-6">
                         <Button 
                             type='button'
                             variant='error'
