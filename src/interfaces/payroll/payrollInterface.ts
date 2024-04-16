@@ -76,6 +76,7 @@ export interface SalaryDetailInterface {
 }
 
 export interface PayrollResponse {
+    status: boolean;
     data: {
         salary: number;
         payrollData: SalaryDetailInterface[];

@@ -131,8 +131,13 @@ export const usePayroll = () => {
                 }))
             }
         },
-        onError:(error:AxiosError)=> {
-            toast.error(error.message, {
+        onError: async (error)=> {
+            const err = error as AxiosError<DataMessageError>
+            let message = `${errors}`
+            if(err.response?.status === 400){
+                message = await handleMessageErrors(err.response?.data?.errors)
+            }
+            toast.error(message, {
                 position: toast.POSITION.TOP_CENTER
             });
         }
@@ -147,7 +152,13 @@ export const usePayroll = () => {
                     visible: false
                 }))
                 refetch()
-                reset()
+                reset({
+                    basicSalary: '0',
+                    month: '',
+                    sessionSalary: '0',
+                    total: '0',
+                    payrollDetails: []
+                })
                 toast.success(t("success-save"), {
                     position: toast.POSITION.TOP_CENTER
                 });
@@ -187,9 +198,18 @@ export const usePayroll = () => {
                 position: toast.POSITION.TOP_CENTER
             });
         },
-        onError:(error) => {
-            const err = error as AxiosError
-            toast.success(`${err}`, {
+        onError: async (error)=> {
+            const err = error as AxiosError<DataMessageError>
+            let message = `${errors}`
+            if(err.response?.status === 400){
+                message = await handleMessageErrors(err.response?.data?.errors)
+            }
+            modalConfirm.setModalConfirm({
+                ...modalConfirm.modalConfirm,
+                loading: false,
+                visible: false
+            })
+            toast.error(message, {
                 position: toast.POSITION.TOP_CENTER
             });
         }
@@ -240,6 +260,12 @@ export const usePayroll = () => {
 
     const getPayrollSession = async (tentorId:string, month:string) => {
         const data:PayrollResponse = await getDataPayrollSession(Payroll.getDataPayrollSession, tentorId, month)
+        
+        if(!data.status) {
+            toast.error('Payroll data has been generated',{
+                position: 'top-center'
+            })
+        }
         setValue('sessionSalary', data.data.salary+'')
         setValue('payrollDetails', data.data.payrollData)
         setValue('total', parseFloat(getValues('basicSalary')?.replace(/,/g,'')) + parseFloat(data.data.salary+'')+'')

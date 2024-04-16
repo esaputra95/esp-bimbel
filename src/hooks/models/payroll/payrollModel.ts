@@ -65,7 +65,7 @@ const getDataPayrollSession = async (url:string, tentorId: string, month:string)
 		});
 		return response.data
 	} catch (error) {
-		throw error as AxiosError
+		return error as AxiosError
 	}
 }
 

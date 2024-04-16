@@ -96,8 +96,13 @@ export const useClassMaster = () => {
                 }))
             }
         },
-        onError:(error:AxiosError)=> {
-            toast.error(error.message, {
+        onError: async (error)=> {
+            const err = error as AxiosError<DataMessageError>
+            let message = `${errors}`
+            if(err.response?.status === 400){
+                message = await handleMessageErrors(err.response?.data?.errors)
+            }
+            toast.error(message, {
                 position: toast.POSITION.TOP_CENTER
             });
         }
@@ -142,9 +147,18 @@ export const useClassMaster = () => {
                 position: toast.POSITION.TOP_CENTER
             });
         },
-        onError:(error) => {
-            const err = error as AxiosError
-            toast.success(`${err}`, {
+        onError:async (error) => {
+            const err = error as AxiosError<DataMessageError>
+            let message = `${errors}`
+            if(err.response?.status === 400){
+                message = await handleMessageErrors(err.response?.data?.errors)
+            }
+            modalConfirm.setModalConfirm({
+                ...modalConfirm.modalConfirm,
+                loading: false,
+                visible: false
+            })
+            toast.error(message, {
                 position: toast.POSITION.TOP_CENTER
             });
         }
