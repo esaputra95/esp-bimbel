@@ -95,7 +95,7 @@ const FormSession: FC<SessionFormProps> = (props) => {
                     {...register('schedule.method')}
                     className='w-full'
                     option={[
-                        {label:'Offline', value:'offline'},
+                        {label:'Offline - Kantor ESP Bimbel', value:'offline'},
                         {label:'Online', value:'online'}
                     ]}
                     disabled={idDetail ? true : false}

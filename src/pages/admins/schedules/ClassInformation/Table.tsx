@@ -26,6 +26,7 @@ const TableClassInformation: FC<TableType> = (props) => {
                 events={dataClassInformation.event}
                 businessHours={businessHours}
                 slotDuration="00:30:00"
+                locale='en-GB'
                 headerToolbar={{
                     left: 'prev,next',
                     center: 'title',

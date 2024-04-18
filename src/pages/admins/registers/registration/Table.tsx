@@ -147,13 +147,13 @@ const Table: FC<TableProps> = (props) => {
                                     </span>
                                     <span title="Send Chat"
                                         className="p-1.5 bg-deep-purple-100 hover:bg-purple-200 hover:cursor-pointer rounded-full"
-                                        onClick={()=>sendMessage(value.students?.parentPhone ?? '')}
+                                        onClick={()=>sendMessage(value.students?.phone ?? '')}
                                     >
                                         <BsWhatsapp className='text-purple-700' />
                                     </span>
                                     <span title="Chat Orang Tua"
                                         className="p-1.5 bg-green-100 hover:bg-green-200 hover:cursor-pointer rounded-full"
-                                        onClick={()=>sendMessage(value.students?.phone ?? '')}
+                                        onClick={()=>sendMessage(value.students?.parentPhone ?? '')}
                                     >
                                         <BsWhatsapp className='text-green-700' />
                                     </span>

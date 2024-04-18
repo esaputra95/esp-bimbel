@@ -258,7 +258,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         >
                                             <option></option>
                                             <option value='online'>Online</option>
-                                            <option value='offline'>Offline </option>
+                                            <option value='offline'>Offline - Kantor ESP Bimbel </option>
                                         </select>
                                     </div>
                                 </div>

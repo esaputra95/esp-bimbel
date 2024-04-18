@@ -75,12 +75,13 @@ const useScheduleReport = () => {
         const city = headerData.data.setting.find(value=> value.label === "city")
         const postalCode = headerData.data.setting.find(value=> value.label === "postal-code")
         const website = headerData.data.setting.find(value=> value.label === "website")
+        const footNote = headerData.data.setting.find(value=> value.label === "footnote")
         const email = headerData.data.setting.find(value=> value.label === "email")
 
         doc.addImage(`${import.meta.env.VITE_API_URL}/images/${icon?.value}`, 'JPEG', 12, 2, 25, 25);
         doc.setFontSize(9)
         doc.text([
-            'LAPORAN JADWAL ESP SISWA', 
+            'LAPORAN JADWAL ESP SISWA ABC', 
             `Head Office: ${address?.value ?? ''}`,
             `${city?.value ?? ''}, ${postalCode?.value ?? ''}`,
             `hotline : ${hotline?.value ?? ''}`,
@@ -154,6 +155,8 @@ const useScheduleReport = () => {
             styles:{halign:'center'},
             body: data??'',
         })
+        doc.setFontSize(9)
+        doc.text(footNote?.value ?? '' , 12,285)
         doc.save('Laporan Jadwal Siswa.pdf')
     }
 

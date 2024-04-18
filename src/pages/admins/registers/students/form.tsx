@@ -38,7 +38,8 @@ const FormStudent: FC<StudentFormProps> = (props) => {
                     {...register("phone")}
                     errors={errors.phone?.message} 
                     readOnly={idDetail?true:false} 
-                    label={t("phone")} 
+                    placeholder='+6282345678901'
+                    label={t("phone")+' Whatsapp (+6282345678901)'} 
                 />
                 <InputText
                     {...register("school")}
@@ -120,7 +121,8 @@ const FormStudent: FC<StudentFormProps> = (props) => {
                     {...register("parentPhone")}
                     errors={errors.parentPhone?.message} 
                     readOnly={idDetail?true:false} 
-                    label={t("parent-phone")} 
+                    placeholder='+6282345678901'
+                    label={t("parent-phone")+' Whatsapp (+6282345678901)'} 
                 />
                 <InputCheckBox
                     {...register('agreement')}

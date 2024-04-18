@@ -220,23 +220,16 @@ export const useSession = () => {
 
     const { mutate, isLoading:isLoadingMutate } = useMutation({
         mutationFn: (data:SessionInputForm)=> postData(SessionSchedule.post, data),
-        onSuccess: async (data) => {
-            if(data.status){
-                setModalForm((state)=>({
-                    ...state,
-                    visible: false
-                }))
-                refetch()
-                reset(SessionDummy)
-                toast.success(t("success-save"), {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            }else{
-                const message = await handleMessageErrors(data.response.data.errors)
-                toast.error(message, {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            }
+        onSuccess: async () => {
+            // setModalForm((state)=>({
+            //     ...state,
+            //     visible: false
+            // }))
+            // refetch()
+            // reset(SessionDummy)
+            // toast.success(t("success-save"), {
+            //     position: toast.POSITION.TOP_CENTER
+            // });
         },
         onError: async (errors) => {
             const err = errors as AxiosError<DataMessageError>
@@ -284,6 +277,10 @@ export const useSession = () => {
             })
             setError(`time.${check.index2??0}.date`, {
                 message: 'Jadwal ini bentrok'
+            })
+        }else if(data.schedule.method==="offline" && data.time.filter(e=>e.roomId==="").length>0){
+            setError(`time.${data.time.findIndex(e=>e.roomId==="")??0}.roomId`,{
+                message: 'Metode belajar offline wajib memilih ruangan'
             })
         }else{
             mutate({
