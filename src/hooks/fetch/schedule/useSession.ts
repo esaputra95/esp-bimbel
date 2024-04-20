@@ -221,15 +221,15 @@ export const useSession = () => {
     const { mutate, isLoading:isLoadingMutate } = useMutation({
         mutationFn: (data:SessionInputForm)=> postData(SessionSchedule.post, data),
         onSuccess: async () => {
-            // setModalForm((state)=>({
-            //     ...state,
-            //     visible: false
-            // }))
-            // refetch()
-            // reset(SessionDummy)
-            // toast.success(t("success-save"), {
-            //     position: toast.POSITION.TOP_CENTER
-            // });
+            setModalForm((state)=>({
+                ...state,
+                visible: false
+            }))
+            refetch()
+            reset(SessionDummy)
+            toast.success(t("success-save"), {
+                position: toast.POSITION.TOP_CENTER
+            });
         },
         onError: async (errors) => {
             const err = errors as AxiosError<DataMessageError>
