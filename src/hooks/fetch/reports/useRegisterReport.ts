@@ -79,7 +79,7 @@ const useRegisterReport = () => {
         doc.addImage(`${import.meta.env.VITE_API_URL}/images/${icon?.value}`, 'JPEG', 2, 2, 25, 25);
         doc.setFontSize(9)
         doc.text([
-            'LAPORAN PENGGAJIAN TENTOR', 
+            'LAPORAN PENDAFTARAN', 
             `Head Office: ${address?.value ?? ''}`,
             `${city?.value ?? ''}, ${postalCode?.value ?? ''}`,
             `hotline : ${hotline?.value ?? ''}`,

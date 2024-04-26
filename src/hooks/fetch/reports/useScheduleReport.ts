@@ -139,6 +139,9 @@ const useScheduleReport = () => {
             // doc.text(`Tentor : ${getValues('tentor.label')}`,14, 60)
             doc.text(`Tentor : ${getValues('tentor.label')}`,14, topTentor)
         }
+        doc.setFontSize(9)
+        doc.setTextColor('#000000')
+        doc.text(footNote?.value ?? '' , 12,285,)
 
         let newHead:string[]=[];
         for (const value of helperReport.headerReportSchedule) {
@@ -155,8 +158,7 @@ const useScheduleReport = () => {
             styles:{halign:'center'},
             body: data??'',
         })
-        doc.setFontSize(9)
-        doc.text(footNote?.value ?? '' , 12,285)
+        
         doc.save('Laporan Jadwal Siswa.pdf')
     }
 

@@ -24,18 +24,6 @@ const FormClassType: FC<ClassTypeFormProps> = (props) => {
                     label={t("name")} 
                 />
                 <InputText
-                    {...register("price")}
-                    errors={errors.price?.message} 
-                    readOnly={idDetail?true:false} 
-                    label={t("price")} 
-                />
-                <InputText
-                    {...register("quantity")}
-                    errors={errors.quantity?.message} 
-                    readOnly={idDetail?true:false} 
-                    label={t("study-total")} 
-                />
-                <InputText
                     {...register("description")}
                     errors={errors.description?.message} 
                     readOnly={idDetail?true:false} 

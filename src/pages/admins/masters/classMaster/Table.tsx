@@ -24,6 +24,8 @@ const header = [
     { label: 'name' },
     { label: 'class-types' },
     { label: 'study-method' },
+    { label: 'price' },
+    { label: 'quantity' },
     { label: 'description' },
     { 
         label: 'Action',
@@ -67,6 +69,12 @@ const Table: FC<TableProps> = (props) => {
                                 </td>
                                 <td className="px-6 py-4">
                                     {value.method}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {value.price}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {value.quantity}
                                 </td>
                                 <td className="px-6 py-4">
                                     {value.description}

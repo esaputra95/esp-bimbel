@@ -9,6 +9,7 @@ export interface RegisterReport {
     typeStudy?:string;
     RegisterType?:OptionSelectInterface;
     course?:OptionSelectInterface
+    student?:OptionSelectInterface
     type?: 'view' | 'download'
 }
 

@@ -5,8 +5,8 @@ export interface ClassTypeInterface {
     id?: string;
     code?: string;
     name: string;
-    price: number;
-    quantity:number;
+    price?: number;
+    quantity?:number;
     description?: string;
     userCreate?: string | null,
     createdAt?: Date | null,

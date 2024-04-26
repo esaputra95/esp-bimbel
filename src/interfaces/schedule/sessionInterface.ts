@@ -123,6 +123,8 @@ export type SessionFormProps = {
     appendIdDeleteSessionDetail: UseFieldArrayAppend<SessionInputForm, "idDeleteSessionDetails">;
     dataOptionClassType: OptionSelectInterface[];
     optionClassType: (data: string) => Promise<OptionSelectInterface[]>
+    test: boolean;
+    tesOnFocus: (index: number) => Promise<void>
 
 }
 

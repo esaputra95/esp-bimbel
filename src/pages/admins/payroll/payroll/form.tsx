@@ -99,7 +99,7 @@ const FormPayroll: FC<PayrollFormProps> = (props) => {
                     </span>
                 </div>
                 <div className='w-full'>
-                    <LabelInput>{t("session-salary")}</LabelInput>
+                    <LabelInput>{t("teaching salary")}</LabelInput>
                     <Controller
                         name="sessionSalary"
                         control={control}
@@ -162,6 +162,7 @@ const FormPayroll: FC<PayrollFormProps> = (props) => {
                         <tr>
                             <th className='font-semibold text-sm'> {t('time')} </th>
                             <th> {t('student-quantity')} </th>
+                            <th> {t('class')} </th>
                             <th> {t('price')} </th>
                         </tr>
                     </thead>
@@ -178,6 +179,13 @@ const FormPayroll: FC<PayrollFormProps> = (props) => {
                                     <td>
                                         <InputText 
                                             {...register(`payrollDetails.${index}.totalStudent`)}
+                                            readOnly
+                                        />
+                                    </td>
+                                    <td>
+                                        <InputText 
+                                            {...register(`payrollDetails.${index}.className`)}
+                                            type='text'
                                             readOnly
                                         />
                                     </td>

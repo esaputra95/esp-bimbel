@@ -60,15 +60,15 @@ const FormRecordMateri: FC<RecordMateriFormProps> = (props) => {
                                 name="tentor"
                                 control={control}
                                     render={({ field }) => 
-                                    <AsyncSelect 
-                                        className='w-full'
-                                        {...field}
-                                        defaultOptions
-                                        loadOptions={optionTutor}
-                                        placeholder='Pilih...'
-                                        ref={(ref)=>ref}
-                                    />
-                                }
+                                        <AsyncSelect 
+                                            className='w-full'
+                                            {...field}
+                                            defaultOptions
+                                            loadOptions={optionTutor}
+                                            placeholder='Pilih...'
+                                            ref={(ref)=>ref}
+                                        />
+                                    }
                             />
                             <span className='text-red-300'>
                             {

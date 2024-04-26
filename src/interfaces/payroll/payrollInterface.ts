@@ -15,6 +15,7 @@ export interface PayrollInterface {
     sessionSalary: string;
     total: string;
     payrollDetails: PayrollDetailInterface[]
+    class?:string;
     userCreate?: string | null,
     createdAt?: Date | null,
     updatedAt?: Date | null,
@@ -73,6 +74,7 @@ export interface SalaryDetailInterface {
     time: string;
     type: string;
     price: string;
+    className: string
 }
 
 export interface PayrollResponse {

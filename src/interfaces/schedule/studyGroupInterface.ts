@@ -21,6 +21,7 @@ export interface StudyGroupInterface {
     name: string
     classId: string
     class?: OptionSelectInterface
+    classMaster?: ClassMasterInterface
     guidanceTypeId: string
     guidanceType?: OptionSelectInterface
     total: number

@@ -9,6 +9,7 @@ import AsyncSelect from 'react-select/async';
 import { useClassType } from '../../../../hooks/fetch/master/useClassType';
 import { useCourse } from '../../../../hooks/fetch/master/useCourse';
 import Spinner from '../../../../components/ui/Spinner';
+import { useStudent } from '../../../../hooks/fetch/master/useStudent';
 
 const Filter: FC<RegisterReportFilter> = (props) => {
     const {
@@ -31,6 +32,10 @@ const Filter: FC<RegisterReportFilter> = (props) => {
     const {
         optionCourse
     } = useCourse()
+
+    const {
+        optionStudentAll
+    } = useStudent()
 
     return (
         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
@@ -100,6 +105,23 @@ const Filter: FC<RegisterReportFilter> = (props) => {
                                 cacheOptions
                                 defaultOptions
                                 loadOptions={optionCourse}
+                            />
+                        }
+                    />
+                </div>
+                <div className='w-full'>
+                    <LabelInput>{t("students")}</LabelInput>
+                    <Controller
+                        name="student"
+                        control={control}
+                            render={({ field }) => 
+                            <AsyncSelect 
+                                className='w-full'
+                                {...field}
+                                placeholder={`${t('all')}...`}
+                                cacheOptions
+                                defaultOptions
+                                loadOptions={optionStudentAll}
                             />
                         }
                     />

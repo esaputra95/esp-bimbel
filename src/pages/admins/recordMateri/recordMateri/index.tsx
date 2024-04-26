@@ -44,7 +44,8 @@ const RecordMateriPage = () => {
     
     const {
         optionStudent,
-        dataOptionStudent
+        optionStudentAll,
+        dataOptionStudentAll
     } = useStudent();
 
     const {
@@ -78,8 +79,8 @@ const RecordMateriPage = () => {
                     getListStudents={getListStudents}
                     getValues={getValues}
                     fieldDetails={fieldDetails}
-                    optionStudent={optionStudent}
-                    dataOptionStudent={dataOptionStudent}
+                    optionStudent={optionStudentAll}
+                    dataOptionStudent={dataOptionStudentAll}
                     optionCourse={optionCourse}
                     dataOptionCourse={dataOptionCourse}
                     updateStatus={updateStatus}

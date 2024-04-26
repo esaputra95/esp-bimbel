@@ -62,6 +62,7 @@ export const useSession = () => {
     const modalConfirm = modalConfirmState()
     const page = usePage();
     const [queryUrl] = useSearchParams()
+    const [ test, setTes ] = useState(true)
     
     useEffect(()=> {
         setModalForm((state)=>({
@@ -143,7 +144,9 @@ export const useSession = () => {
         queryKey: ['group'],
         refetchOnWindowFocus: false,
         queryFn: async () => {
-            const data:ApiResponseUpdateStudyGroup = await getDataByIdGroup(StudyGroup.getById, queryUrl.get('id')??'')
+            const data:ApiResponseUpdateStudyGroup = await getDataByIdGroup(
+                StudyGroup.getById, queryUrl.get('id')??''
+            )
             return data.data
         },
         onSuccess: (data:StudyGroupInputForm)=> {
@@ -160,6 +163,7 @@ export const useSession = () => {
                     }
                 ]
             }
+            setValue('schedule.studyGroupId', data.studyGroup.classMaster?.classTypeId)
             setValue('time', detail)
         }
     })
@@ -179,9 +183,14 @@ export const useSession = () => {
         });
         if(response.status){
             setDataOptionTutor(response.data.tutor)
+            setTes(false)
             return response.data.tutor
         }
         return [OptionDummy];
+    }
+
+    const tesOnFocus = async (index:number) => {
+        optionTutorSchedule(getValues(`time.${index}.date`), index)
     }
 
     const { mutate:mutateById } = useMutation({
@@ -519,6 +528,8 @@ export const useSession = () => {
         dataGroup,
         optionTutorSchedule,
         dataOptionTutor,
-        handleOpenForm
+        handleOpenForm,
+        test,
+        tesOnFocus
     }
 }

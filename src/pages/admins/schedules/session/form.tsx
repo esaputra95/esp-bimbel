@@ -48,8 +48,9 @@ const FormSession: FC<SessionFormProps> = (props) => {
         handleOnChangeSession,
         handleOnChangeSessionDetail,
         appendIdDeleteSessionDetail,
-        // dataOptionClassType,
-        optionClassType
+        dataOptionClassType,
+        optionClassType,
+        tesOnFocus
     } = props;
 
     const {t} = useTranslation()
@@ -78,8 +79,10 @@ const FormSession: FC<SessionFormProps> = (props) => {
                                 className='w-full'
                                 {...field}
                                 loadOptions={optionClassType}
+                                defaultOptions={true}
                                 isDisabled={idDetail? true : false}
-                                defaultOptions
+                                value={  dataOptionClassType.filter(value=> 
+                                    value.value === getValues(`schedule.studyGroupId`))}
                                 placeholder='Select...'
                                 ref={(ref)=> ref}
                             />
@@ -210,6 +213,7 @@ const FormSession: FC<SessionFormProps> = (props) => {
                                                 {...field}
                                                 loadOptions={(e)=> optionTutorSchedule(e, index)}
                                                 defaultOptions
+                                                onFocus={()=>tesOnFocus(index)}
                                                 isDisabled={idDetail? true : false}
                                                 placeholder='Select...'
                                                 value={ updateStatus || idDetail ? dataOptionTutor.filter(value=> 
