@@ -9,7 +9,7 @@ import { useStudent } from '../../../../hooks/fetch/master/useStudent'
 import { useCourse } from '../../../../hooks/fetch/master/useCourse'
 import { useRoom } from '../../../../hooks/fetch/master/useRoom'
 import { t } from 'i18next'
-import { useClassType } from '../../../../hooks/fetch/master/useClassType'
+import { useClassMaster } from '../../../../hooks/fetch/master/useClassMaster'
 
 const SessionPage = () => {
     const {
@@ -66,10 +66,10 @@ const SessionPage = () => {
         dataOptionRoom
     } = useRoom()
 
-    const { 
-        dataOptionClassType,
-        optionClassType
-    } = useClassType()
+    const {
+        optionClassMaster,
+        dataOptionClassMaster
+    } = useClassMaster()
 
     return (
         <div className='w-full'>
@@ -120,8 +120,8 @@ const SessionPage = () => {
                     handleOnChangeSession={handleOnChangeSession}
                     handleOnChangeSessionDetail={handleOnChangeSessionDetail}
                     appendIdDeleteSessionDetail={appendIdDeleteSessionDetail}
-                    dataOptionClassType={dataOptionClassType}
-                    optionClassType={optionClassType}
+                    dataOptionClassMaster={dataOptionClassMaster}
+                    optionClassMaster={optionClassMaster}
                     test={test}
                     tesOnFocus={tesOnFocus}
                 />

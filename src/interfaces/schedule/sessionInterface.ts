@@ -21,7 +21,7 @@ import { TutorInterface } from "../master/tutorInterface";
 
 export interface SessionInterface {
     id?: string;
-    scheduleType: OptionSelectInterface
+    scheduleTypeOption: OptionSelectInterface
     studyGroupId?: string;
     date: string;
     tentorId?: string;
@@ -43,7 +43,8 @@ export interface SessionForm {
     id?:string;
     studyGroupId?: string;
     method: methodEnum;
-    scheduleType?: OptionSelectInterface
+    scheduleType?: string;
+    scheduleTypeOption?: OptionSelectInterface
 }
 
 export interface TimeForm {
@@ -113,16 +114,11 @@ export type SessionFormProps = {
     optionRoom:  (data: string) => Promise<OptionSelectInterface[]>;
     dataOptionRoom: OptionSelectInterface[];
     handleOnChangeTime: (index: number, key: keyof TimeForm, value: string) => Promise<void>
-    handleOnChangeSession: (
-        key: 'schedule.scheduleType' 
-            | 'schedule.studyGroupId' 
-            | 'schedule.method', 
-        value: string
-    ) => void;
+    handleOnChangeSession: (key: "schedule.scheduleTypeOption" | "schedule.studyGroupId" | "schedule.method", value: string) => Promise<void>
     handleOnChangeSessionDetail : (value: string, index: number) => void;
     appendIdDeleteSessionDetail: UseFieldArrayAppend<SessionInputForm, "idDeleteSessionDetails">;
-    dataOptionClassType: OptionSelectInterface[];
-    optionClassType: (data: string) => Promise<OptionSelectInterface[]>
+    dataOptionClassMaster: OptionSelectInterface[];
+    optionClassMaster: (data: string) => Promise<OptionSelectInterface[]>
     test: boolean;
     tesOnFocus: (index: number) => Promise<void>
 

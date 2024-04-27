@@ -31,7 +31,7 @@ export const StudyGroupDummy = {
 export const SessionDummy = {
     schedule: {
         method: methodEnum.offline,
-        scheduleType: OptionDummy
+        scheduleTypeOption: OptionDummy
     }, 
     time: [
         {

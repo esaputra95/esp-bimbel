@@ -31,7 +31,6 @@ const header = [
     { label: 'tentor' },
     { label: 'room' },
     { label: 'type' },
-    { label: 'schedule-type' },
     { label: 'status' },
     { 
         label: 'Action',
@@ -87,11 +86,6 @@ const Table: FC<TableProps> = (props) => {
                                 <td className="px-6 py-4">
                                     {
                                         value.type
-                                    }
-                                </td>
-                                <td className="px-6 py-4">
-                                    {
-                                        value.scheduleType.value
                                     }
                                 </td>
                                 <td className="px-6 py-4">

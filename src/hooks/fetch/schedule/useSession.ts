@@ -163,7 +163,7 @@ export const useSession = () => {
                     }
                 ]
             }
-            setValue('schedule.studyGroupId', data.studyGroup.classMaster?.classTypeId)
+            setValue('schedule.scheduleType', data.studyGroup.classMaster?.id)
             setValue('time', detail)
         }
     })
@@ -452,7 +452,7 @@ export const useSession = () => {
     }
 
     const handleOnChangeSession = async (
-        key: 'schedule.scheduleType' | 'schedule.studyGroupId' | 'schedule.method',
+        key: 'schedule.scheduleTypeOption' | 'schedule.studyGroupId' | 'schedule.method',
         value: string 
     ) => {
         setValue(key, value)

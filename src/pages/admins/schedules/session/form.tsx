@@ -48,8 +48,8 @@ const FormSession: FC<SessionFormProps> = (props) => {
         handleOnChangeSession,
         handleOnChangeSessionDetail,
         appendIdDeleteSessionDetail,
-        dataOptionClassType,
-        optionClassType,
+        dataOptionClassMaster,
+        optionClassMaster,
         tesOnFocus
     } = props;
 
@@ -72,17 +72,17 @@ const FormSession: FC<SessionFormProps> = (props) => {
                         {t('schedule-type')}
                     </LabelInput>
                     <Controller
-                        name={`schedule.scheduleType`}
+                        name={`schedule.scheduleTypeOption`}
                         control={control}
                             render={({ field }) => 
                             <AsyncSelect
                                 className='w-full'
                                 {...field}
-                                loadOptions={optionClassType}
+                                loadOptions={optionClassMaster}
                                 defaultOptions={true}
                                 isDisabled={idDetail? true : false}
-                                value={  dataOptionClassType.filter(value=> 
-                                    value.value === getValues(`schedule.studyGroupId`))}
+                                value={  dataOptionClassMaster.filter(value=> 
+                                    value.value === getValues(`schedule.scheduleType`))}
                                 placeholder='Select...'
                                 ref={(ref)=> ref}
                             />
@@ -90,7 +90,7 @@ const FormSession: FC<SessionFormProps> = (props) => {
                     />
                     <span className='text-red-500 text-sm font-light'>
                     {
-                        errors.schedule?.scheduleType?.message
+                        errors.schedule?.scheduleTypeOption?.message
                     }
                     </span>
                 </div>
