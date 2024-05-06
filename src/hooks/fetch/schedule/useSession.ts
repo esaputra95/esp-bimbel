@@ -156,7 +156,7 @@ export const useSession = () => {
                 detail=[...detail,
                     {
                         date: '',
-                        courseId : 'OptionDummy',
+                        courseId : '',
                         tentorId: '',
                         roomId: '',
                         type: typeEnum.study
@@ -177,7 +177,7 @@ export const useSession = () => {
 
     const optionTutorSchedule = async (name: string, index:number): Promise<OptionSelectInterface[]> => {
         const response = await getDataSelectSchedule(Tutor.getSelectSchedule, {
-            courseId: getValues(`time.${index}.courseId`),
+            courseId: getValues(`time.${index}.courseId`)??'',
             name: name,
             date: getValues(`time.${index}.date`)
         });
@@ -280,22 +280,61 @@ export const useSession = () => {
 
     const onSubmit: SubmitHandler<SessionInputForm> = async (data) => {
         const check = await checkOverlap(data.time);
-        if(check.status){
+        const validation = await validationForm(data.time);
+        const checkRoom = await validationRoom(data)
+        
+        if(check.status) {
             setError(`time.${check.index??0}.date`, {
                 message: 'Jadwal ini bentrok'
             })
             setError(`time.${check.index2??0}.date`, {
                 message: 'Jadwal ini bentrok'
             })
-        }else if(data.schedule.method==="offline" && data.time.filter(e=>e.roomId==="").length>0){
-            setError(`time.${data.time.findIndex(e=>e.roomId==="")??0}.roomId`,{
-                message: 'Metode belajar offline wajib memilih ruangan'
+        }else if(!validation){
+        // }else if(data.schedule.method==="offline" && data.time.filter(e=>e.roomId==="").length>0){
+        //     setError(`time.${data.time.findIndex(e=>e.roomId==="")??0}.roomId`,{
+        //         message: 'Metode belajar offline wajib memilih ruangan'
+        //     })
+        }else if(checkRoom.status){
+            setError(`time.${checkRoom.index}.roomId`, {
+                message: 'Room tidak boleh kosong'
             })
         }else{
-            mutate({
-                ...data,
-            })
+            mutate(data)
         }
+    }
+
+    const validationRoom = async (data:SessionInputForm) => {
+        for (let index = 0; index < data.time.length; index++) {
+            if(data.time[index].roomId==="" && data.schedule.method==="offline" && data.time[index].type==="study"){
+                return {
+                    status: true, 
+                    index: index
+                }
+            }
+        }
+        return{
+            status: false,
+            index:0,
+        }
+    }
+
+    const validationForm = async (data:TimeForm[]) => {
+        for (let index = 0; index < data.length; index++) {
+            if(data[index].type==='study'){
+                if(data[index].courseId==="" || data[index].tentorId===""){
+                    if(data[index].courseId==="") setError(`time.${index}.courseId`, {
+                        message:'Subject tidak boleh kosong'
+                    });
+                    if(data[index].tentorId==="") setError(`time.${index}.tentorId`, {
+                        message: 'Tutor tidak boleh kosong'
+                    })
+                    return false
+                }
+                
+            }
+        }
+        return true
     }
 
     const checkOverlap = async (data:TimeForm[]) =>{
@@ -408,10 +447,10 @@ export const useSession = () => {
         }
     })
 
-    const isWeekday = (date:Date) => {
-        const day = date.getDay();
-        return day === 0;
-    };
+    // const isWeekday = (date:Date) => {
+    //     const day = date.getDay();
+    //     return day === 0;
+    // };
 
     const handleOnChangeTime = async (
         index:number,
@@ -432,19 +471,20 @@ export const useSession = () => {
                     message: 'Jadwal sudah digunakan'
                 })
             }else{
-                if(key==='date'){
-                    const checkDate = isWeekday(new Date(value));
-                    if(checkDate){
-                        setError(`time.${index}.date`, {
-                            type:'value',
-                            message: 'Hari libur tidak boleh dipilih'
-                        })
-                    }else{
-                        throw new Error()
-                    }
-                }else{
-                    throw new Error()
-                }
+                throw new Error()
+                // if(key==='date'){
+                //     const checkDate = isWeekday(new Date(value));
+                //     if(checkDate){
+                //         setError(`time.${index}.date`, {
+                //             type:'value',
+                //             message: 'Hari libur tidak boleh dipilih'
+                //         })
+                //     }else{
+                //         throw new Error()
+                //     }
+                // }else{
+                //     throw new Error()
+                // }
             }
         } catch (error) {
             clearErrors(`time.${index}.date`)

@@ -17,8 +17,8 @@ const SessionSchema = () => {
         time: yup.array().of(
             yup.object().shape({
                 date: yup.string().required(`${t("time")} ${t("required")}`),
-                tentorId: yup.string().required(`${t("tutor")} ${t("required")}`),
-                courseId: yup.string().required(`${t("room")} ${t("required")}`),
+                // tentorId: yup.string().required(`${t("tutor")} ${t("required")}`),
+                // courseId: yup.string().required(`${t("room")} ${t("required")}`),
                 type: yup.string().required().oneOf(
                     [typeEnum.study, typeEnum.try_out],
                     `${t("type")} ${t("required")}`

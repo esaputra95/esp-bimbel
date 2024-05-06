@@ -63,7 +63,7 @@ const FormRegistration: FC<RegistrationFormProps> = (props) => {
                 </div>
                 <div className='w-full'>
                     <LabelInput>
-                        {t('sessions')}
+                        {t('class')}
                     </LabelInput>
                     <Controller
                         name={`class`}

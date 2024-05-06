@@ -126,10 +126,10 @@ export const useStudent = () => {
                 doc.text([
                     'PENERIMA', 
                     `Nama: ${student.data.student?.name}`,
-                    `Negara: ${student.data.student?.country}`,
-                    `Privinsi: ${student.data.student?.province}`,
-                    `Kota: ${student.data.student?.city}`,
                     `Alamat: ${student.data.student?.address}`,
+                    `Kota: ${student.data.student?.city}`,
+                    `Privinsi: ${student.data.student?.province}`,
+                    `Negara: ${student.data.student?.country}`,
                     `Hp: ${student.data.student?.phone}`,
                 ], 2, 44);
                 doc.save(`Alamat ${student.data.student.name}.pdf`)

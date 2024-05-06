@@ -45,7 +45,7 @@ export const usePackage = () => {
     useEffect(()=> {
         refetch()
     }, [page.page])
-      
+    
     const {data:dataPackage, isFetching, refetch} = useQuery<ApiResponsePackage, AxiosError>({ 
         queryKey: ['class-types'], 
         networkMode: 'always',

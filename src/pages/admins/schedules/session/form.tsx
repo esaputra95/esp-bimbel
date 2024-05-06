@@ -123,7 +123,7 @@ const FormSession: FC<SessionFormProps> = (props) => {
                             onClick={()=> appendDate(
                                 {
                                     date: '',
-                                    courseId : 'OptionDummy',
+                                    courseId : '',
                                     tentorId: '',
                                     roomId: '',
                                     type: typeEnum.study

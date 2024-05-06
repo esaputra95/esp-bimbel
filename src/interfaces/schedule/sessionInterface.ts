@@ -49,9 +49,9 @@ export interface SessionForm {
 
 export interface TimeForm {
     date: string;
-    courseId: string;
+    courseId?: string;
     course?: OptionSelectInterface;
-    tentorId: string;
+    tentorId?: string;
     tentor?: OptionSelectInterface;
     roomId?: string;
     room?: OptionSelectInterface;

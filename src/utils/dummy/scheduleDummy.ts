@@ -36,9 +36,9 @@ export const SessionDummy = {
     time: [
         {
             date: '',
-            material : OptionDummy,
-            tentor: OptionDummy,
-            room: OptionDummy,
+            material : {...OptionDummy},
+            tentor: {...OptionDummy},
+            room: {...OptionDummy},
             type: typeEnum.study
         }
     ]
