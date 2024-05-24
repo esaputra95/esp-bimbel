@@ -513,6 +513,7 @@ export const useSession = () => {
             }]
         }
         setValue('scheduleDetails', [...dataDetail]);
+        setValue('schedule.studyGroupId', queryUrl.get('id') ?? '');
         return 1;
     }
 
