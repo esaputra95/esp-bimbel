@@ -141,7 +141,9 @@ const useScheduleReport = () => {
         }
         doc.setFontSize(9)
         doc.setTextColor('#000000')
-        doc.text(footNote?.value ?? '' , 12,285,)
+        doc.text(footNote?.value ?? '' , 12,285,{
+            maxWidth: 175
+        })
 
         let newHead:string[]=[];
         for (const value of helperReport.headerReportSchedule) {
