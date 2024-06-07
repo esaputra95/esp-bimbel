@@ -81,7 +81,7 @@ const useScheduleReport = () => {
         doc.addImage(`${import.meta.env.VITE_API_URL}/images/${icon?.value}`, 'JPEG', 12, 2, 25, 25);
         doc.setFontSize(9)
         doc.text([
-            'LAPORAN JADWAL ESP SISWA ABC', 
+            'JADWAL SISWA ESP BIMBEL', 
             `Head Office: ${address?.value ?? ''}`,
             `${city?.value ?? ''}, ${postalCode?.value ?? ''}`,
             `hotline : ${hotline?.value ?? ''}`,

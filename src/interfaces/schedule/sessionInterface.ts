@@ -18,11 +18,13 @@ import {
 import { CourseInterface } from "../master/courseInterface";
 import { RoomInterface } from "../master/roomInterface";
 import { TutorInterface } from "../master/tutorInterface";
+import { StudyGroupInterface } from "./studyGroupInterface";
 
 export interface SessionInterface {
     id?: string;
-    scheduleTypeOption: OptionSelectInterface
+    scheduleTypeOption: OptionSelectInterface;
     studyGroupId?: string;
+    studyGroups?: StudyGroupInterface;
     date: string;
     tentorId?: string;
     tentor: OptionSelectInterface;

@@ -11,6 +11,7 @@ import { useCourse } from '../../../../hooks/fetch/master/useCourse';
 import { useTutor } from '../../../../hooks/fetch/master/useTutor';
 import { useStudent } from '../../../../hooks/fetch/master/useStudent';
 import Spinner from '../../../../components/ui/Spinner';
+import { useStudyGroup } from '../../../../hooks/fetch/schedule/useStudyGroup';
 
 const Filter: FC<ScheduleReportFilter> = (props) => {
     const {
@@ -41,6 +42,10 @@ const Filter: FC<ScheduleReportFilter> = (props) => {
     const {
         optionStudentAll
     } = useStudent()
+
+    const {
+        optionStudyGroup
+    } = useStudyGroup();
 
     return (
         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
@@ -144,6 +149,23 @@ const Filter: FC<ScheduleReportFilter> = (props) => {
                                 cacheOptions
                                 defaultOptions
                                 loadOptions={optionTutor}
+                            />
+                        }
+                    />
+                </div>
+                <div className='w-full'>
+                    <LabelInput>{t("study-groups")}</LabelInput>
+                    <Controller
+                        name="studyGroup"
+                        control={control}
+                            render={({ field }) => 
+                            <AsyncSelect 
+                                className='w-full'
+                                {...field}
+                                placeholder={`${t('all')}...`}
+                                cacheOptions
+                                defaultOptions
+                                loadOptions={optionStudyGroup}
                             />
                         }
                     />

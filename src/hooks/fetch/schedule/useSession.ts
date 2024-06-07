@@ -198,7 +198,11 @@ export const useSession = () => {
         onSuccess:(data:ApiResponseUpdateSession)=>{
             if(data.status){
                 const dataSession = {
-                    schedule: data.data.schedule,
+                    schedule: {
+                        ...data.data.schedule,
+                        studyGroupId: queryUrl.get('id') ?? '',
+                        scheduleType: data.data.schedule.studyGroups?.classMaster?.id
+                    },
                     scheduleDetails: [
                         ...data.data.scheduleDetails
                     ],
@@ -212,7 +216,6 @@ export const useSession = () => {
                         }
                     ]
                 }
-                
                 reset(dataSession)
                 setModalForm((state)=>({
                     ...state,

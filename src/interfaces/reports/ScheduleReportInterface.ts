@@ -11,7 +11,8 @@ export interface ScheduleReport {
     course?:OptionSelectInterface;
     student?:OptionSelectInterface;
     tentor?: OptionSelectInterface;
-    type?: 'view' | 'download'
+    type?: 'view' | 'download',
+    studyGroup?: OptionSelectInterface;
 }
 
 export interface ScheduleReportFilter {
