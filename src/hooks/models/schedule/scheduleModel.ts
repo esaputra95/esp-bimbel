@@ -83,6 +83,19 @@ const cancelSession = async (url:string, id:string) => {
 	}
 }
 
+const getDataRoomSchedule = async (url:string, params: {
+	name: string;
+	date: string
+}) => {
+	try {
+		const response = await api.get(url, {params: {...params}})
+		return response.data
+	} catch (error) {
+		const err = error as AxiosError
+		throw err;
+	}
+}
+
 export {
 	getData,
 	postData,
@@ -90,5 +103,6 @@ export {
 	getDataById,
 	getDataSelect,
 	checkSession,
-	cancelSession
+	cancelSession,
+	getDataRoomSchedule
 };

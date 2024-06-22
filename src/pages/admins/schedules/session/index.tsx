@@ -7,7 +7,6 @@ import { Button } from '../../../../components/input'
 import ModalConfirm from '../../../../components/ui/modal/ModalConfirm'
 import { useStudent } from '../../../../hooks/fetch/master/useStudent'
 import { useCourse } from '../../../../hooks/fetch/master/useCourse'
-import { useRoom } from '../../../../hooks/fetch/master/useRoom'
 import { t } from 'i18next'
 import { useClassMaster } from '../../../../hooks/fetch/master/useClassMaster'
 
@@ -48,7 +47,9 @@ const SessionPage = () => {
         dataOptionTutor,
         handleOpenForm,
         test,
-        tesOnFocus
+        tesOnFocus,
+        dataOptionRoom,
+        optionRoomSchedule
     } = useSession()
 
     const { 
@@ -60,11 +61,6 @@ const SessionPage = () => {
         optionCourse,
         dataOptionCourse
     } = useCourse()
-
-    const {
-        optionRoom,
-        dataOptionRoom
-    } = useRoom()
 
     const {
         optionClassMaster,
@@ -114,7 +110,7 @@ const SessionPage = () => {
                     dataOptionCourse={dataOptionCourse}
                     optionTutorSchedule={optionTutorSchedule}
                     dataOptionTutor={dataOptionTutor}
-                    optionRoom={optionRoom}
+                    optionRoom={optionRoomSchedule}
                     dataOptionRoom={dataOptionRoom}
                     handleOnChangeTime={handleOnChangeTime}
                     handleOnChangeSession={handleOnChangeSession}

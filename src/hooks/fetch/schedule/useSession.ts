@@ -5,6 +5,7 @@ import {
     deleteData,
     getData,
     getDataById,
+    getDataRoomSchedule,
     getDataSelect,
     postData
 } from "../../models/schedule/scheduleModel"
@@ -54,9 +55,10 @@ export const useSession = () => {
     const [ query, setQuery ] = useState<StudentGroupQueryInterface>()
     const [ idDetail, setIdDetail ] = useState<string | null>()
     const [ dataOptionTutor, setDataOptionTutor] = useState<OptionSelectInterface[]>([OptionDummy])
+    const [ dataOptionRoom, setDataOptionRoom] = useState<OptionSelectInterface[]>([OptionDummy])
     const [ updateStatus, setUpdateState] = useState<boolean>(false)
     const [ , setRerender ] = useState(0)
-    const { SessionSchedule, StudyGroup, Tutor } = url
+    const { SessionSchedule, StudyGroup, Tutor, Room } = url
     const { modalForm, setModalForm } = ModalFormState()
     const { t } = useTranslation();
     const modalConfirm = modalConfirmState()
@@ -183,6 +185,20 @@ export const useSession = () => {
         });
         if(response.status){
             setDataOptionTutor(response.data.tutor)
+            setTes(false)
+            return response.data.tutor
+        }
+        return [OptionDummy];
+    }
+    const optionRoomSchedule = async (name: string, index:number): Promise<OptionSelectInterface[]> => {
+        console.log(name);
+        
+        const response = await getDataRoomSchedule(Room.getSelectSchedule, {
+            name: name,
+            date: getValues(`time.${index}.date`)
+        });
+        if(response.status){
+            setDataOptionRoom(response.data.tutor)
             setTes(false)
             return response.data.tutor
         }
@@ -574,6 +590,8 @@ export const useSession = () => {
         dataOptionTutor,
         handleOpenForm,
         test,
-        tesOnFocus
+        tesOnFocus,
+        optionRoomSchedule,
+        dataOptionRoom
     }
 }

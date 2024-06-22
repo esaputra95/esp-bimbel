@@ -28,6 +28,7 @@ const url = {
         getById: 'rooms',
         delete: 'rooms',
         getSelect: 'rooms/select',
+        getSelectSchedule: 'rooms/select-schedule',
     },
     University: {
         get: 'universities',

@@ -113,7 +113,7 @@ export type SessionFormProps = {
     dataOptionCourse: OptionSelectInterface[];
     optionTutorSchedule:  (e: string, index: number) => Promise<OptionSelectInterface[]>;
     dataOptionTutor: OptionSelectInterface[];
-    optionRoom:  (data: string) => Promise<OptionSelectInterface[]>;
+    optionRoom:   (e: string, index: number) => Promise<OptionSelectInterface[]>;
     dataOptionRoom: OptionSelectInterface[];
     handleOnChangeTime: (index: number, key: keyof TimeForm, value: string) => Promise<void>
     handleOnChangeSession: (key: "schedule.scheduleTypeOption" | "schedule.studyGroupId" | "schedule.method", value: string) => Promise<void>

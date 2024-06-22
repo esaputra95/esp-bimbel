@@ -244,8 +244,7 @@ const FormSession: FC<SessionFormProps> = (props) => {
                                             <AsyncSelect
                                                 className='w-full'
                                                 {...field}
-                                                cacheOptions
-                                                loadOptions={optionRoom}
+                                                loadOptions={(e) => optionRoom(e, index)}
                                                 isDisabled={idDetail? true : false}
                                                 defaultOptions
                                                 placeholder='Select...'
