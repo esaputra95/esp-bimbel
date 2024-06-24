@@ -64,7 +64,6 @@ export const useSession = () => {
     const modalConfirm = modalConfirmState()
     const page = usePage();
     const [queryUrl] = useSearchParams()
-    const [ test, setTes ] = useState(true)
     
     useEffect(()=> {
         setModalForm((state)=>({
@@ -180,33 +179,26 @@ export const useSession = () => {
     const optionTutorSchedule = async (name: string, index:number): Promise<OptionSelectInterface[]> => {
         const response = await getDataSelectSchedule(Tutor.getSelectSchedule, {
             courseId: getValues(`time.${index}.courseId`)??'',
-            name: name,
+            name: name ?? '',
             date: getValues(`time.${index}.date`)
         });
         if(response.status){
             setDataOptionTutor(response.data.tutor)
-            setTes(false)
-            return response.data.tutor
-        }
-        return [OptionDummy];
-    }
-    const optionRoomSchedule = async (name: string, index:number): Promise<OptionSelectInterface[]> => {
-        console.log(name);
-        
-        const response = await getDataRoomSchedule(Room.getSelectSchedule, {
-            name: name,
-            date: getValues(`time.${index}.date`)
-        });
-        if(response.status){
-            setDataOptionRoom(response.data.tutor)
-            setTes(false)
             return response.data.tutor
         }
         return [OptionDummy];
     }
 
-    const tesOnFocus = async (index:number) => {
-        optionTutorSchedule(getValues(`time.${index}.date`), index)
+    const optionRoomSchedule = async (name: string, index:number): Promise<OptionSelectInterface[]> => {
+        const response = await getDataRoomSchedule(Room.getSelectSchedule, {
+            name: name ?? '',
+            date: getValues(`time.${index}.date`)
+        });
+        if(response.status){
+            setDataOptionRoom(response.data.tutor)
+            return response.data.tutor
+        }
+        return [OptionDummy];
     }
 
     const { mutate:mutateById } = useMutation({
@@ -589,8 +581,6 @@ export const useSession = () => {
         optionTutorSchedule,
         dataOptionTutor,
         handleOpenForm,
-        test,
-        tesOnFocus,
         optionRoomSchedule,
         dataOptionRoom
     }

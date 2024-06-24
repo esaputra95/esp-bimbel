@@ -46,8 +46,6 @@ const SessionPage = () => {
         optionTutorSchedule,
         dataOptionTutor,
         handleOpenForm,
-        test,
-        tesOnFocus,
         dataOptionRoom,
         optionRoomSchedule
     } = useSession()
@@ -118,8 +116,6 @@ const SessionPage = () => {
                     appendIdDeleteSessionDetail={appendIdDeleteSessionDetail}
                     dataOptionClassMaster={dataOptionClassMaster}
                     optionClassMaster={optionClassMaster}
-                    test={test}
-                    tesOnFocus={tesOnFocus}
                 />
             </ModalForm>
             <div className='w-full'>

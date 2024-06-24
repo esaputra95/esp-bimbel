@@ -50,7 +50,6 @@ const FormSession: FC<SessionFormProps> = (props) => {
         appendIdDeleteSessionDetail,
         dataOptionClassMaster,
         optionClassMaster,
-        tesOnFocus
     } = props;
 
     const {t} = useTranslation()
@@ -180,8 +179,8 @@ const FormSession: FC<SessionFormProps> = (props) => {
                                                 {...field}
                                                 loadOptions={optionCourse}
                                                 isDisabled={idDetail? true : false}
-                                                defaultOptions
                                                 placeholder='Select...'
+                                                defaultOptions
                                                 defaultValue={ updateStatus || idDetail ? 
                                                     dataOptionCourse.filter(value=> 
                                                         value.value === getValues(`time.${index}.courseId`)
@@ -212,8 +211,8 @@ const FormSession: FC<SessionFormProps> = (props) => {
                                                 className='w-full'
                                                 {...field}
                                                 loadOptions={(e)=> optionTutorSchedule(e, index)}
-                                                defaultOptions
-                                                onFocus={()=>tesOnFocus(index)}
+                                                defaultOptions={dataOptionTutor}
+                                                onFocus={()=> optionTutorSchedule('', index)}
                                                 isDisabled={idDetail? true : false}
                                                 placeholder='Select...'
                                                 value={ updateStatus || idDetail ? dataOptionTutor.filter(value=> 
@@ -246,7 +245,8 @@ const FormSession: FC<SessionFormProps> = (props) => {
                                                 {...field}
                                                 loadOptions={(e) => optionRoom(e, index)}
                                                 isDisabled={idDetail? true : false}
-                                                defaultOptions
+                                                onFocus={() => optionRoom('', index)}
+                                                defaultOptions={dataOptionRoom}
                                                 placeholder='Select...'
                                                 value={ updateStatus || idDetail ? dataOptionRoom.filter(value=> 
                                                         value.value === getValues(`time.${index}.roomId`)
