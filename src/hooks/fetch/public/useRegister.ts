@@ -1,22 +1,23 @@
 import { SubmitHandler, useForm } from "react-hook-form"
-import { ApiResponseRegister, RegisterInterface } from "../../../interfaces/public/registerInterface"
+import { RegisterInterface } from "../../../interfaces/public/registerInterface"
 import RegisterSchema from "../../../schema/publics/registerSchema"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useMutation, useQuery } from "@tanstack/react-query"
-import { getData, postData } from "../../models/public/registerModel"
+import { useMutation } from "@tanstack/react-query"
+import { postData } from "../../models/public/registerModel"
 import url from "../../../services/url"
 import { AxiosError } from "axios"
-import usePage from "../../../utils/pageState"
 import { toast } from "react-toastify"
 import { handleMessageErrors } from "../../../services/handleErrorMessage"
 import { DataMessageError } from "../../../interfaces/apiInfoInterface"
 import { t } from "i18next"
 import { useNavigate } from "react-router-dom"
 import { ChangeEvent } from "react"
+import { getDataSelect } from "../../models/registers/studentModel"
+import { OptionDummy } from "../../../utils/dummy/setting"
+import { OptionSelectInterface } from "../../../interfaces/globalInterface"
 
 const useRegister = () => {
-    const { Register } = url;
-    const page = usePage();
+    const { Register, Package, Session, GuidanceType } = url;
     const navigate = useNavigate()
     const {
         reset,
@@ -29,30 +30,11 @@ const useRegister = () => {
     } = useForm<RegisterInterface>({
         resolver: yupResolver(RegisterSchema().schema)
     });
-    
-    const {data:dataClassMaster, isFetching, refetch} = useQuery<ApiResponseRegister, AxiosError>({ 
-        queryKey: ['register'], 
-        networkMode: 'always',
-        queryFn: async () => await getData(Register.get, 
-            {
-                page:page.page,
-                limit: page.limit
-            }
-        ),
-        onSuccess(data) {
-            page.setTotal(Math.ceil((data?.data?.info?.total  ?? 1)/(data?.data?.info?.limit ?? page.limit)));
-        },
-        onError: (errors) => {
-            toast.error(errors.message, {
-                position: toast.POSITION .TOP_CENTER
-            });
-        }
-    })
 
     const { mutate, isLoading:isLoadingMutate } = useMutation({
         mutationFn: (data:RegisterInterface)=> postData(Register.post, data),
         onSuccess: () => {
-            refetch()
+            // refetch()
             reset()
             toast.success(t("success-save"), {
                 position: toast.POSITION.TOP_CENTER
@@ -84,6 +66,31 @@ const useRegister = () => {
         setValue('image', URL.createObjectURL(image as Blob))
     }
 
+    const optionPackage = async (data: string): Promise<OptionSelectInterface[]> => {
+        const response = await getDataSelect(Package.getSelect, {name: data});
+        if(response.status){
+            return response.data.package
+        }
+        return [OptionDummy]
+    }
+
+    const optionSession = async (data: string): Promise<OptionSelectInterface[]> => {
+        const response = await getDataSelect(Session.getSelect, {name: data});
+        if(response.status){
+            return response.data.session
+        }
+        return response.data.guidanceType
+    }
+
+
+    const optionGuidanceType = async (data: string): Promise<OptionSelectInterface[]> => {
+        const response = await getDataSelect(GuidanceType.getSelect, {name: data});
+        if(response.status){
+            return response.data.guidanceType
+        }
+        return response.data.guidanceType
+    }
+
     return {
         register,
         errors,
@@ -91,10 +98,11 @@ const useRegister = () => {
         control,
         onSubmit,
         isLoadingMutate,
-        isFetching,
-        dataClassMaster,
         handleOnChange,
         getValues,
+        optionGuidanceType,
+        optionSession,
+        optionPackage
     }
 }
 

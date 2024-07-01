@@ -47,7 +47,7 @@ export const usePackage = () => {
     }, [page.page])
     
     const {data:dataPackage, isFetching, refetch} = useQuery<ApiResponsePackage, AxiosError>({ 
-        queryKey: ['class-types'], 
+        queryKey: ['get-package'], 
         networkMode: 'always',
         queryFn: async () => await getData(Package.get, 
             {
