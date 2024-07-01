@@ -8,6 +8,7 @@ export interface RegisterInterface extends StudentInterface {
     packageId?: string;
     sessionId?: string;
     status?: number;
+    location: string;
 }
 
 export interface QueryStudentInterface {

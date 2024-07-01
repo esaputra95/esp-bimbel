@@ -17,7 +17,6 @@ import { DataMessageError } from "../../../interfaces/apiInfoInterface"
 import { handleMessageErrors } from "../../../services/handleErrorMessage"
 import { OptionSelectInterface } from "../../../interfaces/globalInterface"
 import { OptionDummy } from "../../../utils/dummy/setting"
-import { RegistrationInterface } from "../../../interfaces/registers/registrationInterface"
 import { getData as getDataSetting}  from "../../models/settings/settingModel"
 import jsPDF from "jspdf";
 import { ApiResponseSetting } from "../../../interfaces/settings/settingInterface"
@@ -26,7 +25,7 @@ export const useStudent = () => {
     const [ query, setQuery ] = useState<{name:string}>()
     const [ idDetail, setIdDetail ] = useState<string | null>()
     const [ dataOptionStudent, setDataOptionStudent] = useState<OptionSelectInterface[]>([OptionDummy])
-    const [ dataRegister, setDataRegister ] = useState<RegistrationInterface[]>([])
+    const [ dataRegister, setDataRegister ] = useState<StudentRegisterInterface>()
     const {
         Student,
         Setting
@@ -174,7 +173,7 @@ export const useStudent = () => {
                     visible: true
                 }))
                 
-                setDataRegister(data.data?.student?.registers ?? [])
+                setDataRegister(data.data?.student)
             }
         },
         onError:(error:AxiosError)=> {

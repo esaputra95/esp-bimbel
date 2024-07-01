@@ -9,14 +9,14 @@ const RegisterTable:FC<RegisterTableInterface> = (props) => {
     return (
         <div className='w-full flex flex-col'>
             {
-                dataRegister.map((value)=> (
+                dataRegister?.registers?.map((value)=> (
                     <div className='grid grid-cols-2'>
                         <label className='w-full bg-gray-300 rounded-l-md p-2 text-sm text-left text-gray-500'>Label</label>
                         <label className='w-full bg-gray-300 p-2 rounded-r-md text-sm text-left text-gray-500'>Value</label>
                         <label className='w-full p-2 text-sm text-left text-gray-500'>{t('packages')}</label>
                         <label className='w-full p-2 text-sm text-left text-gray-500'>{value.packages?.name}</label>
                         <label className='w-full p-2 text-sm text-left text-gray-500'>{t('universities')}</label>
-                        <label className='w-full p-2 text-sm text-left text-gray-500'>{value.university}</label>
+                        <label className='w-full p-2 text-sm text-left text-gray-500'>{dataRegister?.university}</label>
                         <label className='w-full p-2 text-sm text-left text-gray-500'>{t('locations')}</label>
                         <label className='w-full p-2 text-sm text-left text-gray-500'>{value.location}</label>
                         <label className='w-full p-2 text-sm text-left text-gray-500'>{t('guidance-types')}</label>

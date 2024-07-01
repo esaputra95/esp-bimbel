@@ -31,6 +31,8 @@ const RegisterSchema = () => {
         agreement: yup.number().required(`${t("agreement")} ${t("required")}`),
         // packageId: yup.().required(`${t("package")} ${t("required")}`),
         email: yup.string().required(`${t("email")} ${t("required")}`),
+        location: yup.string().required(),
+        statusStudy: yup.string().oneOf(['pelajar', 'alumni']).optional()
     });
 
     return {

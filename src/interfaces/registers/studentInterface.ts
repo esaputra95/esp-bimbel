@@ -28,7 +28,7 @@ export type StudentFormProps = {
 }
 
 export interface RegisterTableInterface {
-    dataRegister: RegistrationInterface[]
+    dataRegister: StudentRegisterInterface | undefined
 }
 
 export interface Info {

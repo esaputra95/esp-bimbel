@@ -21,6 +21,9 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
     } = props
     const {t} = useTranslation()
 
+    console.log({errors});
+    
+
     return (
         <div className='w-full min-h-screen bg-gray-100 '>
             <div className='xl:flex lg:flex md:flex justify-center w-10/12 bg-white xl:p-8 lg:p-8 md:p-8  m-auto space-x-4 rounded-md mb-4'>
@@ -222,46 +225,25 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         label={t("guidance-types")}
                                     />
                                 </div>
-                                <div className="sm:col-span-3">
-                                    <label
-                                        htmlFor="country"
-                                        className="block text-sm font-medium leading-6 text-gray-900"
-                                    >
-                                        Status
-                                    </label>
-                                    <div className="mt-2">
-                                        <select
-                                            {...register('statusStudy')}
-                                            id="statusStudy"
-                                            autoComplete="country-name"
-                                            className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        >
-                                            <option></option>
-                                            <option value='pelajar'>Pelajar</option>
-                                            <option value='alumni'>Alumni </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="sm:col-span-3">
-                                    <label
-                                        htmlFor="country"
-                                        className="block text-sm font-medium leading-6 text-gray-900"
-                                    >
-                                        Lokasi Belajar
-                                    </label>
-                                    <div className="mt-2">
-                                        <select
-                                        id="country"
-                                        name="country"
-                                        autoComplete="country-name"
-                                        className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                        >
-                                            <option></option>
-                                            <option value='online'>Online</option>
-                                            <option value='offline'>Offline - Kantor ESP Bimbel </option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <SelectOption 
+                                    {...register("statusStudy")}
+                                    className='w-full md:w-5/12'
+                                    label='Status'
+                                    option={[
+                                        {value:'alumni', label:'Alumni'},
+                                        {value:'pelajar', label:'Pelajar'}
+                                    ]} 
+                                />
+                                <SelectOption 
+                                    {...register('location')}
+                                    className='w-full md:w-5/12'
+                                    label='Lokasi Belajar'
+                                    option={[
+                                        {value:'online', label:'Online'},
+                                        {value:'offline', label:'Offline - Kantor ESP Bimbel'}
+                                    ]} 
+                                />
+                                
                                 <div className='w-full md:w-5/12'>
                                     <SelectAutoComplete 
                                         control={control}
