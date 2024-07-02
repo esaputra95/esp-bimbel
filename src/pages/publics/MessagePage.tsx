@@ -3,7 +3,9 @@ const MessagePage = () => {
         <div className='w-full h-screen flex flex-col items-center justify-center'>
             <div className='w-6/12 m-auto bg-white shadow-md rounded-lg'>
                 <div className='w-full p-4 bg-green-200 rounded-t-lg'>
-                    <h1 className='font-bold text-2xl'>Selamat, Pendaftaran berhasil...</h1>
+                    <h1 className='font-bold text-2xl'>
+                        Selamat, Pendaftaran berhasil...
+                    </h1>
                     <h1 className='font-medium text-lg'>Kami akan mengirimkan invoice dan informasi lebih lanjut ke no whatsApp Kamu</h1>
                 </div>
                 <div className='p-4 bg-orange-100 rounded-b-lg'>

@@ -28,7 +28,8 @@ export interface RegisterFormInterface {
     idDetail?: string | null;
     control?: Control<RegisterInterface>;
     handleOnChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    getValues: UseFormGetValues<RegisterInterface>
+    getValues: UseFormGetValues<RegisterInterface>;
+    isLoadingMutate: boolean
 }
 
 export interface RegisterSearchInterface extends RegisterInterface {

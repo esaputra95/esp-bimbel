@@ -12,7 +12,8 @@ const RegisterPage = () => {
         getValues,
         optionSession,
         optionGuidanceType,
-        optionPackage
+        optionPackage,
+        loading
     } = useRegister();
 
     return (
@@ -27,6 +28,7 @@ const RegisterPage = () => {
             optionGuidanceType={optionGuidanceType}
             handleOnChange={handleOnChange}
             getValues={getValues}
+            isLoadingMutate={loading}
         />
     )
 }

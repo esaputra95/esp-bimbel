@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import InputCheckBox from '../../../components/input/inputCheckBox'
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import { Controller } from 'react-hook-form'
+import Spinner from '../../../components/ui/Spinner'
 
 const FormRegister: FC<RegisterFormInterface> = (props) => {
     const { 
@@ -17,7 +18,8 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
         optionSession,
         optionGuidanceType,
         handleOnChange,
-        getValues
+        getValues,
+        isLoadingMutate
     } = props
     const {t} = useTranslation()
 
@@ -344,8 +346,11 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                         <Button
                             type='submit'
                             variant='primary'
+                            disabled={isLoadingMutate?true:false}
                         >
-                            {t('register')}
+                            {
+                                isLoadingMutate ? (<Spinner />) : t('register')
+                            }
                         </Button>
                     </div>
                 </form>

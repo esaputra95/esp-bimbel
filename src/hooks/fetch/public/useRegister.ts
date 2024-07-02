@@ -11,13 +11,14 @@ import { handleMessageErrors } from "../../../services/handleErrorMessage"
 import { DataMessageError } from "../../../interfaces/apiInfoInterface"
 import { t } from "i18next"
 import { useNavigate } from "react-router-dom"
-import { ChangeEvent } from "react"
+import { ChangeEvent, useState } from "react"
 import { getDataSelect } from "../../models/registers/studentModel"
 import { OptionDummy } from "../../../utils/dummy/setting"
 import { OptionSelectInterface } from "../../../interfaces/globalInterface"
 
 const useRegister = () => {
     const { Register, Package, Session, GuidanceType } = url;
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const {
         reset,
@@ -39,6 +40,7 @@ const useRegister = () => {
             toast.success(t("success-save"), {
                 position: toast.POSITION.TOP_CENTER
             });
+            setLoading(false)
             navigate('/message')
             
         },
@@ -55,6 +57,7 @@ const useRegister = () => {
     })
 
     const onSubmit: SubmitHandler<RegisterInterface> = (data) => {
+        setLoading(true);
         mutate({
             ...data
         })
@@ -102,7 +105,8 @@ const useRegister = () => {
         getValues,
         optionGuidanceType,
         optionSession,
-        optionPackage
+        optionPackage,
+        loading
     }
 }
 
