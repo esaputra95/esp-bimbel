@@ -91,7 +91,7 @@ export const useRecordMateri = () => {
     }, [page.page])
     
     const {data:dataRecordMateri, isFetching, refetch} = useQuery<ApiResponseRecordMateri, AxiosError>({ 
-        queryKey: ['class-master', query, page.page], 
+        queryKey: ['class-master', query, page.page, page.limit], 
         networkMode: 'always',
         queryFn: async () => await getData(RecordMateri.get, 
             {
