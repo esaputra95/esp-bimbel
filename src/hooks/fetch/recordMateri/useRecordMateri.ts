@@ -82,8 +82,11 @@ export const useRecordMateri = () => {
         setValue('tentorId', token?.id)
     }, [token])
 
-    useEffect(()=> {
+    useEffect(()=>{
         page.setLimit(50)
+    }, [])
+
+    useEffect(()=> {
         refetch()
     }, [page.page])
     
