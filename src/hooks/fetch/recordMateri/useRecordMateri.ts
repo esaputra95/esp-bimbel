@@ -83,6 +83,7 @@ export const useRecordMateri = () => {
     }, [token])
 
     useEffect(()=> {
+        page.setLimit(50)
         refetch()
     }, [page.page])
     
@@ -93,7 +94,7 @@ export const useRecordMateri = () => {
             {
                 ...query, 
                 page:page.page,
-                limit: 50
+                limit: page.limit
             }
         ),
         onSuccess(data) {
