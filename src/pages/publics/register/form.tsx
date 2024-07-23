@@ -168,10 +168,10 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         htmlFor="photo"
                                         className="block text-sm font-semibold leading-6 text-gray-900"
                                     >
-                                        Photo
+                                        Photo (max 10 mb)
                                     </label>
                                     <div className='w-full flex gap-4'>
-                                        <div className="mt-2 flex items-center gap-x-3">
+                                        <div className="mt-2 flex items-center gap-x-3 flex-col">
                                             {/* <svg
                                             className="h-12 w-12 text-gray-300"
                                             viewBox="0 0 24 24"
@@ -196,6 +196,7 @@ const FormRegister: FC<RegisterFormInterface> = (props) => {
                                         </div>
                                         
                                     </div>
+                                    <span className='text-red-400 font-light text-sm'>{errors?.imageUpload?.message?.toString() ?? ''}</span>
                                 </div>
                                 
                             </div>

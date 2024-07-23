@@ -27,6 +27,7 @@ const useRegister = () => {
         control,
         setValue,
         getValues,
+        setError,
         formState: { errors },
     } = useForm<RegisterInterface>({
         resolver: yupResolver(RegisterSchema().schema)
@@ -64,9 +65,15 @@ const useRegister = () => {
     }
 
     const handleOnChange = (event:ChangeEvent<HTMLInputElement>) => {
-        const image = event.target.files?.[0] ?? ''
-        setValue('imageUpload', event.target.files)
-        setValue('image', URL.createObjectURL(image as Blob))
+        const maxFileSize = 1 * 1024 * 1024;
+        const image = event.target.files?.[0]
+        if(image?.size && image.size < maxFileSize ){
+            setValue('imageUpload', event.target.files)
+            setValue('image', URL.createObjectURL(image as Blob))
+            setError('imageUpload', {})
+        } else {
+            setError('imageUpload', {message: 'Maximal size gambar 10 mb, silahkan pilih ukuran gambar yang lebih kecil'})
+        }
     }
 
     const optionPackage = async (data: string): Promise<OptionSelectInterface[]> => {

@@ -151,7 +151,7 @@ export const usePayroll = () => {
                     ...state,
                     visible: false
                 }))
-                refetch()
+                // refetch()
                 reset({
                     basicSalary: '0',
                     month: '',
