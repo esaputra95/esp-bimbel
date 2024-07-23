@@ -55,7 +55,7 @@ export const useRegistration = () => {
     }, [page.page])
     
     const {data:dataRegistration, isFetching, refetch} = useQuery<ApiResponseRegistration, AxiosError>({ 
-        queryKey: ['register-admin', query], 
+        queryKey: ['register-admin', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Registration.get, 
             {

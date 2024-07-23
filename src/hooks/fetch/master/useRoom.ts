@@ -60,7 +60,7 @@ export const useRoom = () => {
     }, [page.page])
     
     const {data:dataRoom, isFetching, refetch} = useQuery<ApiResponseRoom, AxiosError>({ 
-        queryKey: ['rooms', query], 
+        queryKey: ['rooms', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Room.get, 
             {

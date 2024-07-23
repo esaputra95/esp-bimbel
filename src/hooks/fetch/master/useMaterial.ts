@@ -47,9 +47,9 @@ export const useMaterial = () => {
     useEffect(()=> {
         refetch()
     }, [page.page])
-      
+    
     const {data:dataMaterial, isFetching, refetch} = useQuery<ApiResponseMaterial, AxiosError>({ 
-        queryKey: ['get-Material'], 
+        queryKey: ['get-Material', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Material.get, 
             {

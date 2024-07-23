@@ -80,7 +80,7 @@ export const useStudyGroup = () => {
     
     const {data:dataStudyGroup, isFetching, refetch} = 
     useQuery<ApiResponseStudyGroup, AxiosError>({ 
-        queryKey: ['study-group'], 
+        queryKey: ['study-group', page.page], 
         queryFn: async () => await getData(StudyGroup.get, 
             {
                 ...query, 

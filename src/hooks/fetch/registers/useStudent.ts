@@ -70,7 +70,7 @@ export const useStudent = () => {
     }, [page.page])
     
     const {data:dataStudent, isFetching, refetch} = useQuery<ApiResponseStudent, AxiosError>({ 
-        queryKey: ['class-master', query], 
+        queryKey: ['class-master', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Student.get, 
             {

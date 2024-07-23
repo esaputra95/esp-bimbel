@@ -52,7 +52,7 @@ export const useMajor = () => {
     }, [page.page])
     
     const {data:dataMajor, isFetching, refetch} = useQuery<ApiResponseMajor, AxiosError>({ 
-        queryKey: ['get-Major', query], 
+        queryKey: ['get-Major', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Major.get, 
             {

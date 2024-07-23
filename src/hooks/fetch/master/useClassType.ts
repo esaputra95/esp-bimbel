@@ -54,7 +54,7 @@ export const useClassType = () => {
     }, [page.page]);
     
     const {data:dataClassType, isFetching, refetch} = useQuery<ApiResponseClassType, AxiosError>({ 
-        queryKey: ['class-types', query], 
+        queryKey: ['class-types', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(classType.get, 
             {

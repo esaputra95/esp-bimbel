@@ -87,13 +87,13 @@ export const useRecordMateri = () => {
     }, [page.page])
     
     const {data:dataRecordMateri, isFetching, refetch} = useQuery<ApiResponseRecordMateri, AxiosError>({ 
-        queryKey: ['class-master'], 
+        queryKey: ['class-master', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(RecordMateri.get, 
             {
                 ...query, 
                 page:page.page,
-                limit: page.limit
+                limit: 50
             }
         ),
         onSuccess(data) {

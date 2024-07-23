@@ -55,7 +55,7 @@ export const useCourse = () => {
     }, [page.page])
     
     const {data:dataCourse, isFetching, refetch} = useQuery<ApiResponseCourse, AxiosError>({ 
-        queryKey: ['get-Course', query], 
+        queryKey: ['get-Course', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Course.get, 
             {

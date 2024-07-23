@@ -57,7 +57,7 @@ export const useClassMaster = () => {
     }, [page.page])
     
     const {data:dataClassMaster, isFetching, refetch} = useQuery<ApiResponseClassMaster, AxiosError>({ 
-        queryKey: ['class-master', query], 
+        queryKey: ['class-master', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(ClassMaster.get, 
             {

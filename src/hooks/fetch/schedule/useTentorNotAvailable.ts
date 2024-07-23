@@ -79,7 +79,7 @@ export const useTentorNotAvailable = () => {
     
     const {data:dataTentorNotAvailable, isFetching, refetch} = 
     useQuery<ApiResponseTentorNotAvailable, AxiosError>({ 
-        queryKey: ['class-types', query], 
+        queryKey: ['class-types', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(TentorNotAvailable.get, 
             {

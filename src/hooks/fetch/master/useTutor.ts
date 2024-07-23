@@ -64,7 +64,7 @@ export const useTutor = () => {
     }, [page.page]);
     
     const {data:dataTutor, isFetching, refetch} = useQuery<ApiResponseTutor, AxiosError>({ 
-        queryKey: ['class-types', query], 
+        queryKey: ['class-types', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Tutor.get, 
             {
