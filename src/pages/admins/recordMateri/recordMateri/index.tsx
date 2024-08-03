@@ -43,7 +43,6 @@ const RecordMateriPage = () => {
     } = useRecordMateri()
     
     const {
-        optionStudent,
         optionStudentAll,
         dataOptionStudentAll
     } = useStudent();
@@ -103,7 +102,7 @@ const RecordMateriPage = () => {
                                     className='w-full'
                                     cacheOptions
                                     defaultOptions
-                                    loadOptions={optionStudent}
+                                    loadOptions={optionStudentAll}
                                     onChange={(e: SingleValue<OptionSelectInterface>)=>handleOnChangeStudents(e?.value ?? '')}
                                     placeholder={t('select-students')}
                                     ref={(ref)=>ref}

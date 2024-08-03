@@ -362,9 +362,9 @@ export const useSession = () => {
 
     const isOverlap = async (time1:string, time2:string) => {
         const start1 = new Date(time1);
-        const end1 = new Date(new Date(time1).getTime() + 90 * 60000);
+        const end1 = new Date(new Date(time1).getTime() + 89 * 60000);
         const start2 = new Date(time2);
-        const end2 = new Date(new Date(time2).getTime() + 90 * 60000);
+        const end2 = new Date(new Date(time2).getTime() + 89 * 60000);
     
         // Memeriksa apakah ada tumpang tindih
         return !(end1 <= start2 || start1 >= end2);
