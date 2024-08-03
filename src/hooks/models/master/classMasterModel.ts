@@ -5,7 +5,7 @@ import { AxiosError } from "axios";
 interface ParamClassMasterInterface extends ClassMasterSearchInterface {
 	page?: number,
 	limit?: number,
-	order?: string
+	order?: string,
 }
 
 const getData = async (url:string, params:ParamClassMasterInterface) => {

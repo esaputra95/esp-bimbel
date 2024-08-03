@@ -50,7 +50,6 @@ export const usePayroll = () => {
     const { t } = useTranslation();
     const modalConfirm = modalConfirmState()
     const page = usePage();
-    const doc = new jsPDF();
     
     useEffect(()=> {
         setModalForm((state)=>({
@@ -124,7 +123,7 @@ export const usePayroll = () => {
                     ...dataPayroll,
                     payrollDetails: dataPayrollDetail
                 })
-                
+                refetch()
                 setModalForm((state)=>({
                     ...state,
                     visible: true
@@ -172,6 +171,7 @@ export const usePayroll = () => {
                     position: toast.POSITION.TOP_CENTER
                 });
             }
+            refetch()
         },
         onError: async (errors) => {
             const err = errors as AxiosError<DataMessageError>
@@ -292,7 +292,8 @@ export const usePayroll = () => {
     }
 
     const printPayroll = async (id:string) => {
-        const data = await getPayrollDetail(Payroll.getPayrollDetail, id)
+        const data = await getPayrollDetail(Payroll.getPayrollDetail, id);
+        const doc = new jsPDF();
         if(data.status){
             const headerData:ApiResponseSetting = await getDataSetting(Setting.get);
             const icon = headerData.data.setting.find(value=> value.label === "icon")

@@ -19,8 +19,9 @@ import { OptionSelectInterface } from "../../../interfaces/globalInterface"
 import { OptionDummy } from "../../../utils/dummy/setting"
 
 export const useClassMaster = () => {
-    const [ query, setQuery ] = useState({
-        name: ''
+    const [ query, setQuery ] = useState<{name?: string, classType?: string}>({
+        name: '',
+        classType: ''
     })
     const [ idDetail, setIdDetail ] = useState<string | null>()
     const [ dataOptionClassMaster, setDataOptionCLassMaster] = useState<OptionSelectInterface[]>([OptionDummy])
@@ -50,6 +51,7 @@ export const useClassMaster = () => {
     const {
         register:registerFilter,
         handleSubmit:handleSubmitFilter,
+        control:controlFilter,
     } = useForm<ClassMasterInterface>()
 
     useEffect(()=> {
@@ -248,5 +250,6 @@ export const useClassMaster = () => {
         onFilter,
         registerFilter,
         handleSubmitFilter,
+        controlFilter
     }
 }
