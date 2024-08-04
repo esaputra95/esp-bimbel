@@ -64,7 +64,7 @@ const RecordMateriPage = () => {
                 visible={modalForm.visible}
                 onClose={onCancel}
                 title={modalForm.label}
-                size="medium"
+                size="large"
             >
                 <FormRecordMateri
                     onCancel={onCancel}

@@ -6,6 +6,7 @@ export interface GuidanceTypeInterface {
     name: string;
     total: number;
     type?: string;
+    number?: number;
     userCreate?: string | null,
     createdAt?: Date | null,
     updatedAt?: Date | null,

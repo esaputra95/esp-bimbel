@@ -23,6 +23,13 @@ const FormPackage: FC<PackageFormProps> = (props) => {
                     readOnly={idDetail?true:false} 
                     label={t("description")} 
                 />
+                <InputText
+                    {...register("number")}
+                    errors={errors.number?.message} 
+                    readOnly={idDetail?true:false} 
+                    type='number'
+                    label={t("Urutan")} 
+                />
             </div>
             <div className='w-full flex justify-end space-x-2'>
                 <Button 

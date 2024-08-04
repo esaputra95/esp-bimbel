@@ -148,7 +148,7 @@ export const useRecordMateri = () => {
                             studentId: recordMateri.studentId,
                             description: recordMateri.description,
                             advice: recordMateri.advice,
-                            materiId: recordMateri.materiId
+                            materiId: recordMateri.materiId,
                         }
                     ]
                 })
@@ -307,7 +307,8 @@ export const useRecordMateri = () => {
                 {
                     studentId: list[index].studentId,
                     materiId: list[index].materiId,
-                    scheduleDetailId: list[index].id
+                    scheduleDetailId: list[index].id,
+                    time: list[index].time
                 }
             ]
         }

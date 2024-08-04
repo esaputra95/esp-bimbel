@@ -5,6 +5,7 @@ export interface PackageInterface {
     id?: string;
     name: string;
     description?: string;
+    number?: number;
     userCreate?: string | null,
     createdAt?: Date | null,
     updatedAt?: Date | null,

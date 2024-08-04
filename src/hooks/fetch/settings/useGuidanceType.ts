@@ -57,9 +57,9 @@ export const useGuidanceType = () => {
     useEffect(()=> {
         refetch()
     }, [page.page])
-      
+
     const {data:dataGuidanceType, isFetching, refetch} = useQuery<ApiResponseGuidanceType, AxiosError>({ 
-        queryKey: ['class-types'], 
+        queryKey: ['guidance-types', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(GuidanceType.get, 
             {
@@ -152,7 +152,10 @@ export const useGuidanceType = () => {
     })
 
     const onSubmit: SubmitHandler<GuidanceTypeInterface> = (data) => {
-        mutate(data)
+        mutate({
+            ...data,
+            number: parseInt(data.number+'')
+        })
     }
 
     const onDelete = (id: string) => {

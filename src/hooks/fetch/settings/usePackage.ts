@@ -47,7 +47,7 @@ export const usePackage = () => {
     }, [page.page])
     
     const {data:dataPackage, isFetching, refetch} = useQuery<ApiResponsePackage, AxiosError>({ 
-        queryKey: ['get-package'], 
+        queryKey: ['get-package', query, page.page], 
         networkMode: 'always',
         queryFn: async () => await getData(Package.get, 
             {
@@ -142,7 +142,10 @@ export const usePackage = () => {
     })
 
     const onSubmit: SubmitHandler<PackageInterface> = (data) => {
-        mutate(data)
+        mutate({
+            ...data,
+            number: parseInt(data.number+'')
+        })
     }
 
     const onDelete = (id: string) => {

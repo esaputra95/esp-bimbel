@@ -10,6 +10,7 @@ import { SessionInterface } from "../schedule/sessionInterface";
 export interface RecordMateriInterface {
     id?: string;
     date?: string;
+    time?: string;
     studentId: string;
     tentorId?:string;
     student?: OptionSelectInterface;

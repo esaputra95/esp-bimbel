@@ -30,6 +30,7 @@ const header = [
     },
     { label: 'name' },
     { label: 'phone' },
+    { label: 'phone-parent' },
     { label: 'gender' },
     { label: 'study-program' },
     { label: 'school' },
@@ -83,6 +84,9 @@ const Table: FC<TableProps> = (props) => {
                                 </td>
                                 <td className="px-6 py-4">
                                     {value.phone}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {value.parentPhone}
                                 </td>
                                 <td className="px-6 py-4">
                                     {value.gender}

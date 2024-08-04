@@ -103,6 +103,9 @@ const FormRecordMateri: FC<RecordMateriFormProps> = (props) => {
                                 {t('materials')}
                             </th>
                             <th className='p-2'>
+                                {t('time')}
+                            </th>
+                            <th className='p-2'>
                                 {t('description')}
                             </th>
                         </tr>
@@ -111,7 +114,7 @@ const FormRecordMateri: FC<RecordMateriFormProps> = (props) => {
                     {
                         fieldDetails.length > 0 ?fieldDetails.map((field, index)=>
                             <tr key={field.id}>
-                                <td >
+                                <td className='w-60'>
                                     <Controller
                                         name={`detail.${index}.student`}
                                         control={control}
@@ -140,7 +143,7 @@ const FormRecordMateri: FC<RecordMateriFormProps> = (props) => {
                                     }
                                     </span>
                                 </td>
-                                <td >
+                                <td className='w-60'>
                                     <Controller
                                         name={`detail.${index}.material`}
                                         control={control}
@@ -168,6 +171,12 @@ const FormRecordMateri: FC<RecordMateriFormProps> = (props) => {
                                         errors.detail?.[index]?.student?.message ?? null
                                     }
                                     </span>
+                                </td>
+                                <td className='w-40'>
+                                    <InputText 
+                                        {...register(`detail.${index}.time`)}
+                                        disabled={true}
+                                    />
                                 </td>
                                 <td>
                                 <Controller

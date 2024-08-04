@@ -22,6 +22,7 @@ const header = [
     },
     { label: 'name' },
     { label: 'description' },
+    { label: 'Urutan' },
     { 
         label: 'Action',
         width: 'w-16'
@@ -31,7 +32,7 @@ const header = [
 const Table: FC<tableProps> = (props) => {
     const { data, isFetching, page, limit, onDelete, onUpdate, onDetail } = props;
     const { t } = useTranslation()
-    let number:number = ((page-1)*limit)
+    const number:number = ((page-1)*limit)
     return (
         <div className="relative overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -58,6 +59,9 @@ const Table: FC<tableProps> = (props) => {
                                 </td>
                                 <td className="px-6 py-4">
                                     {value.total}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {value.number}
                                 </td>
                                 <td className="px-6 py-4 flex">
                                     <span title="Update" className="p-1.5 bg-green-50 hover:bg-green-100 hover:cursor-pointer rounded-full" onClick={()=>onUpdate(value.id ?? '')}>

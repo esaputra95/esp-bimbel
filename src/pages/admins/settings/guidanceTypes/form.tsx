@@ -24,6 +24,13 @@ const FormGuidanceType: FC<GuidanceTypeFormProps> = (props) => {
                     label={t("total")} 
                     type='number'
                 />
+                <InputText
+                    {...register("number")}
+                    errors={errors.number?.message} 
+                    readOnly={idDetail?true:false} 
+                    label={t("Urutan")} 
+                    type='number'
+                />
             </div>
             <div className='w-full flex justify-end space-x-2'>
                 <Button 
