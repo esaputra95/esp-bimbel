@@ -10,7 +10,6 @@ import { useEffect, useState } from "react"
 import {
     ApiResponseStudyGroup,
     ApiResponseUpdateStudyGroup,
-    StudentGroupQueryInterface,
     StudyGroupInputForm
 } from "../../../interfaces/schedule/studyGroupInterface"
 import { 
@@ -36,7 +35,7 @@ import { useNavigate } from "react-router-dom"
 import { SingleValue } from "react-select"
 
 export const useStudyGroup = () => {
-    const [ query, setQuery ] = useState<StudentGroupQueryInterface>()
+    const [ query, setQuery ] = useState<{name?: string}>()
     const [ idDetail, setIdDetail ] = useState<string | null>()
     const [ updateStatus, setUpdateState] = useState<boolean>(false)
     const [ dataOptionStudyGroup, setDataOptionStudyGroup] = useState<OptionSelectInterface[]>([OptionDummy])
@@ -61,13 +60,19 @@ export const useStudyGroup = () => {
         control,
         setValue,
         getValues,
-
         trigger,
         formState: { errors },
     } = useForm<StudyGroupInputForm>({
         resolver: yupResolver(StudyGroupSchema().schema),
         defaultValues:  StudyGroupDummy
     });
+
+    const {
+        register:registerFilter,
+        handleSubmit:handleSubmitFilter,
+        control:controlFilter,
+
+    } = useForm<{name?: string}>()
 
     const { fields, append, remove } = useFieldArray({
         control,
@@ -80,7 +85,7 @@ export const useStudyGroup = () => {
     
     const {data:dataStudyGroup, isFetching, refetch} = 
     useQuery<ApiResponseStudyGroup, AxiosError>({ 
-        queryKey: ['study-group', page.page], 
+        queryKey: ['study-group', page.page, query], 
         queryFn: async () => await getData(StudyGroup.get, 
             {
                 ...query, 
@@ -254,6 +259,15 @@ export const useStudyGroup = () => {
         trigger('studyGroup.guidanceTypeId')
     }
 
+    const onFilter: SubmitHandler<{name?:string}> = (data) => {
+        console.log({data});
+        
+        setQuery((state)=>({
+            ...state,
+            name: data.name
+        }));
+    }
+
     return {
         dataStudyGroup,
         isFetching,
@@ -284,6 +298,10 @@ export const useStudyGroup = () => {
         dataOptionStudyGroup,
         openSchedule,
         onChangeStudyGroup,
-        onChangeStudyGroupDetail
+        onChangeStudyGroupDetail,
+        onFilter,
+        registerFilter,
+        handleSubmitFilter,
+        controlFilter
     }
 }
