@@ -260,8 +260,6 @@ export const useStudyGroup = () => {
     }
 
     const onFilter: SubmitHandler<{name?:string}> = (data) => {
-        console.log({data});
-        
         setQuery((state)=>({
             ...state,
             name: data.name
