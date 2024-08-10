@@ -22,7 +22,7 @@ const RecordMateri:FC<RecordMateri> = (props) => {
                         <th className='px-3 py-3'>{t('time')}</th>
                         <th className='px-3 py-3'>{t('group-name')}</th>
                         <th className='px-3 py-3'>{t('name')}</th>
-                        <th className='px-3 py-3'>{t('phone')}</th>
+                        <th className='px-3 py-3'>{t('tentor')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,7 @@ const RecordMateri:FC<RecordMateri> = (props) => {
                         </td>
                         <td className='p-3'>
                             {
-                                value.students?.phone ?? ''
+                                value.tutor?.name ?? ''
                             }
                         </td>
                     </tr>
