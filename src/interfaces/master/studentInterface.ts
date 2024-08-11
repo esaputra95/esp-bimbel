@@ -7,7 +7,7 @@ export interface StudentInterface {
     phone: string;
     school: string;
     placeBirth: string;
-    dateBirth: Date;
+    dateBirth: string;
     address: string;
     gender: MyEnum,
     classGrade: string;

@@ -20,6 +20,7 @@ import { OptionDummy } from "../../../utils/dummy/setting"
 import { getData as getDataSetting}  from "../../models/settings/settingModel"
 import jsPDF from "jspdf";
 import { ApiResponseSetting } from "../../../interfaces/settings/settingInterface"
+import moment from "moment"
 
 export const useStudent = () => {
     const [ query, setQuery ] = useState<{name:string}>()
@@ -149,7 +150,10 @@ export const useStudent = () => {
         mutationFn: (id:string) => getDataById(Student.getById, id),
         onSuccess:(data:ApiResponseUpdateStudent)=>{
             if(data.status){
-                reset(data.data.student)
+                reset({
+                    ...data.data.student,
+                    dateBirth: moment(data.data.student.dateBirth).format('YYYY-MM-DD'),
+                })
                 setModalForm((state)=>({
                     ...state,
                     visible: true

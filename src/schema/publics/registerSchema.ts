@@ -14,7 +14,7 @@ const RegisterSchema = () => {
         phone: yup.string().required(`${t("phone")} ${t("required")}`),
         school: yup.string().required(`${t("school")} ${t("required")}`),
         placeBirth: yup.string().required(`${t("place-birth")} ${t("required")}`),
-        dateBirth: yup.date().required(`${t("date-birth")} ${t("required")}`),
+        dateBirth: yup.string().required(`${t("date-birth")} ${t("required")}`),
         address: yup.string().required(`${t("address")} ${t("required")}`),
         // gender: yup.mixed<MyEnum>().required().oneOf(['laki-laki', 'perempuan']).required(`${t("gender")} ${t("required")}`),
         gender: yup.string().required().oneOf([MyEnum.LakiLaki, MyEnum.Perempuan], 'Invalid gender value'),
