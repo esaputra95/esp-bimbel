@@ -3,7 +3,7 @@ import { RegisterInterface } from "../../../interfaces/public/registerInterface"
 import RegisterSchema from "../../../schema/publics/registerSchema"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation } from "@tanstack/react-query"
-import { postData } from "../../models/public/registerModel"
+import { postData, uploadImage } from "../../models/public/registerModel"
 import url from "../../../services/url"
 import { AxiosError } from "axios"
 import { toast } from "react-toastify"
@@ -36,7 +36,6 @@ const useRegister = () => {
     const { mutate, isLoading:isLoadingMutate } = useMutation({
         mutationFn: (data:RegisterInterface)=> postData(Register.post, data),
         onSuccess: () => {
-            // refetch()
             reset()
             toast.success(t("success-save"), {
                 position: toast.POSITION.TOP_CENTER
@@ -57,11 +56,28 @@ const useRegister = () => {
         }
     })
 
-    const onSubmit: SubmitHandler<RegisterInterface> = (data) => {
+    const onSubmit: SubmitHandler<RegisterInterface> = async (data) => {
         setLoading(true);
-        mutate({
-            ...data
-        })
+        if(data.imageUpload){
+            const upload = await uploadImage(data.imageUpload)
+            if(upload){
+                mutate({
+                    ...data,
+                    image: upload
+                })
+            } else {
+                setLoading(false)
+                toast.error('Photo yang kamu pilih tidak sesuai, mohon baca ketentuan upload Photo', {
+                    position: toast.POSITION.TOP_CENTER
+                });
+            }
+        }else{
+            setLoading(false)
+            toast.error('Photo yang kamu pilih tidak sesuai, mohon baca ketentuan upload Photo', {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        setLoading(false)
     }
 
     const handleOnChange = (event:ChangeEvent<HTMLInputElement>) => {

@@ -15,6 +15,7 @@ const MessagePage = () => {
                     <h1 className='font-medium'>Admin 3 : +6289514268527</h1>
                     <h1 className='font-medium'>Admin 4 : +6285974857383</h1>
                     <h1 className='font-medium'>Admin 5 : +6281912883149</h1>
+                    <h1 className='font-medium'>Admin 6 : +6287821594060</h1>
                     <h1 className='font-medium'>Telepon : (0274)2250131</h1>
                     <h1 className='font-medium'>Kami tidak bertanggung jawab atas tagihan yang dikirimkan selain no diatas</h1>
                     <h1 className='font-medium'>Terima Kasih</h1>
