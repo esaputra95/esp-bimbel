@@ -60,12 +60,6 @@ const FormStudent: FC<StudentFormProps> = (props) => {
                     type='date'
                     label={t("date-birth")} 
                 />
-                <InputText
-                    {...register("address")}
-                    errors={errors.address?.message} 
-                    readOnly={idDetail?true:false} 
-                    label={t("address")} 
-                />
                 <SelectOption 
                     {...register('gender')}
                     label={t('gender')}
@@ -94,10 +88,16 @@ const FormStudent: FC<StudentFormProps> = (props) => {
                     label={t("university")} 
                 />
                 <InputText
-                    {...register("country")}
-                    errors={errors.country?.message} 
+                    {...register("address")}
+                    errors={errors.address?.message} 
                     readOnly={idDetail?true:false} 
-                    label={t("country")} 
+                    label={t("address")} 
+                />
+                <InputText
+                    {...register("city")}
+                    errors={errors.city?.message} 
+                    readOnly={idDetail?true:false} 
+                    label={t("city")} 
                 />
                 <InputText
                     {...register("province")}
@@ -106,10 +106,10 @@ const FormStudent: FC<StudentFormProps> = (props) => {
                     label={t("province")} 
                 />
                 <InputText
-                    {...register("city")}
-                    errors={errors.city?.message} 
+                    {...register("country")}
+                    errors={errors.country?.message} 
                     readOnly={idDetail?true:false} 
-                    label={t("city")} 
+                    label={t("country")} 
                 />
                 <InputText
                     {...register("parentName")}
