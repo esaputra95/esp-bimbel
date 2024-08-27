@@ -4,7 +4,7 @@ const usePage = () => {
     const [total, setTotal] = useState(0)
     const [limit, setLimit] = useState(20)
 
-    const handlePage = (dataPage: number)=>{
+    const handlePage = (dataPage: number, totalData?:number)=>{
         if(dataPage===-1 && page > 1){
             setPage(state=>state+dataPage)
         }
@@ -13,6 +13,12 @@ const usePage = () => {
         }
         if(dataPage>0){
             setPage(dataPage)
+        }
+        if(dataPage===-3){
+            setPage(1)
+        }
+        if(dataPage===-4){
+            setPage(totalData??1)
         }
     }
     return{

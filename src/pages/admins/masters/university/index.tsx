@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useUniversity } from '../../../../hooks/fetch/master/useUniversity'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormUniversity from './form'
@@ -7,6 +6,7 @@ import { Button, InputText } from '../../../../components/input'
 import useLocatioanName from '../../../../utils/location'
 import ModalConfirm from '../../../../components/ui/modal/ModalConfirm'
 import { t } from 'i18next'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const UniversityPage = () => {
     const { 

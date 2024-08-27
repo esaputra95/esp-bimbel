@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useClassMaster } from '../../../../hooks/fetch/master/useClassMaster'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormClassMaster from './form'
@@ -11,6 +10,7 @@ import { useClassType } from '../../../../hooks/fetch/master/useClassType'
 import { InputText } from "../../../../components/input";
 import { t } from 'i18next'
 import { Controller } from 'react-hook-form'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const ClassMasterPage = () => {
     const { 

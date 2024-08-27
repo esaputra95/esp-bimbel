@@ -1,5 +1,5 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
+import TablePaging from '../../../../components/ui/TablePaging'
 import { useRegistration } from '../../../../hooks/fetch/registers/useRegistration'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormRegistration from './form'

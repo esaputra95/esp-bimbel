@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useTutor } from '../../../../hooks/fetch/master/useTutor'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormTutor from './form'
@@ -9,6 +8,7 @@ import ModalConfirm from '../../../../components/ui/modal/ModalConfirm'
 import { t } from 'i18next'
 import { useCourse } from '../../../../hooks/fetch/master/useCourse'
 import { useEffect } from 'react'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const TutorPage = () => {
     const { 

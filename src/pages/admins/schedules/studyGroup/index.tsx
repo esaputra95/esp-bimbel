@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useStudyGroup } from '../../../../hooks/fetch/schedule//useStudyGroup'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormStudyGroup from './form'
@@ -11,6 +10,7 @@ import { useClassMaster } from '../../../../hooks/fetch/master/useClassMaster'
 import { useGuidanceType } from '../../../../hooks/fetch/settings/useGuidanceType'
 import { useEffect } from 'react'
 import { t } from 'i18next'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const StudyGroupPage = () => {
     const { 

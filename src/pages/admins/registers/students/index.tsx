@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useStudent } from '../../../../hooks/fetch/registers/useStudent'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormStudent from './form'
@@ -9,6 +8,7 @@ import ModalConfirm from '../../../../components/ui/modal/ModalConfirm'
 import { useClassType } from '../../../../hooks/fetch/master/useClassType'
 import RegisterTable from './RegisterTable'
 import { t } from 'i18next'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const StudentPage = () => {
     const { 

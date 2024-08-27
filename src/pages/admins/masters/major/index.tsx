@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useMajor } from '../../../../hooks/fetch/master/useMajor'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormMajor from './form'
@@ -8,6 +7,7 @@ import useLocatioanName from '../../../../utils/location'
 import ModalConfirm from '../../../../components/ui/modal/ModalConfirm'
 import { useUniversity } from '../../../../hooks/fetch/master/useUniversity'
 import { t } from 'i18next'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const MajorPage = () => {
     const { 

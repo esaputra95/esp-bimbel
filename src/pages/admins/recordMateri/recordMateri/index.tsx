@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useRecordMateri } from '../../../../hooks/fetch/recordMateri/useRecordMateri'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormRecordMateri from './form'
@@ -14,6 +13,7 @@ import { OptionSelectInterface } from '../../../../interfaces/globalInterface'
 import { BsSearch } from "react-icons/bs";
 import { t } from 'i18next'
 import { useTutor } from '../../../../hooks/fetch/master/useTutor'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const RecordMateriPage = () => {
     const { 

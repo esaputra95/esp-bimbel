@@ -1,5 +1,4 @@
 import Table from './Table'
-import TablePaging from './TablePaging'
 import { useClassType } from '../../../../hooks/fetch/master/useClassType'
 import ModalForm from '../../../../components/ui/modal/ModalForm'
 import FormClassType from './form'
@@ -7,6 +6,7 @@ import { Button, InputText } from '../../../../components/input'
 import useLocatioanName from '../../../../utils/location'
 import ModalConfirm from '../../../../components/ui/modal/ModalConfirm'
 import { t } from 'i18next'
+import TablePaging from '../../../../components/ui/TablePaging'
 
 const ClassTypePage = () => {
     const { 
