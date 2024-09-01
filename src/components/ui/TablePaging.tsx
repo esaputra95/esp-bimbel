@@ -9,11 +9,36 @@ type TablePagingProps = {
 const TablePaging:FC<TablePagingProps> = (props) => {
     const {total, page, handlePage} = props
     const listPage = [];
-    for (let index = 1; index <= total; index++) {
+    const limit = 15;
+    let before;
+    let after;
+    if(total>5){
+        after=(
+            <li className="inline-flex" onClick={()=> handlePage(-1)}>
+                <span
+                    className="flex hover:cursor-pointer items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                    >
+                    .
+                </span>
+            </li>
+        )
+        if(page>limit){
+            before=(
+                <li onClick={()=> handlePage(-1)}>
+                    <span
+                        className="flex hover:cursor-pointer items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                        >
+                        .
+                    </span>
+                </li>
+            )
+        }
+    }
+    for (let index = 1; index <= limit; index++) {
         listPage.push(
-        <li key={Math.random().toString(5)} onClick={()=> handlePage(index)}>
-            <span className={`${page===index ? 'bg-gray-300' : 'bg-white'} hover:cursor-pointer flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`} >
-            {index}
+        <li key={Math.random().toString(5)} onClick={()=> handlePage(page>limit?page-limit+index:index)}>
+            <span className={`${page===(page>limit?page-limit+index:index) ? 'bg-gray-300' : 'bg-white'} hover:cursor-pointer flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`} >
+            {page>limit?page-limit+index:index}
             </span>
         </li>)
     }
@@ -36,7 +61,13 @@ const TablePaging:FC<TablePagingProps> = (props) => {
                         </span>
                     </li>
                     {
+                        before
+                    }
+                    {
                         listPage
+                    }
+                    {
+                        after
                     }
                     <li onClick={()=> handlePage(-2)}>
                         <span
