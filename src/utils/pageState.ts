@@ -2,7 +2,7 @@ import { useState } from "react"
 const usePage = () => {
     const [page, setPage] = useState(1)
     const [total, setTotal] = useState(0)
-    const [limit, setLimit] = useState(5)
+    const [limit, setLimit] = useState(20)
 
     const handlePage = (dataPage: number, totalData?:number)=>{
         if(dataPage===-1 && page > 1){
