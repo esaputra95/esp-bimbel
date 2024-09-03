@@ -48,6 +48,9 @@ const ProfilePage = () => {
                     
                 </div>
             </div>
+            <div>
+                <a href="change-password">Ubah Password</a>
+            </div>
         </div>
     )
 }

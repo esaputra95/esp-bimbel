@@ -5,7 +5,7 @@ type Token = {
     id: string;
     username: string;
     name: string;
-    userType: 'admin' | 'tentor'
+    userType: 'admin' | 'tentor' | 'employee'
 }
 
 type AccessUserTpe = {
@@ -32,6 +32,33 @@ const access = {
         'record-materi',
         'payroll',
         'payroll-reports', 
+        'record-materi-reports',
+        'student-reports',
+        'schedule-reports',
+        'register-reports',
+        'guidance-types',
+        'guidance-packages',
+        'school-years',
+        'sessions',
+        'companies',
+        'profile'
+    ],
+    employee: [
+        '',
+        'dashboard',
+        'tutors',
+        'class-types',
+        'class',
+        'rooms',
+        'universities',
+        'majors',
+        'courses',
+        'students',
+        'registrations',
+        'tentor-not-available',
+        'study-groups',
+        'class-information',
+        'record-materi',
         'record-materi-reports',
         'student-reports',
         'schedule-reports',

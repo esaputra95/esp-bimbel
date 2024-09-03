@@ -121,7 +121,8 @@ export const Indonesia = {
     "session-salary": "Gaji Persesi",
     "skill": "Keahlian",
     "profile": "Profile",
-    "teaching salary": "Gaji Mengajar"
+    "teaching salary": "Gaji Mengajar",
+    "employee": "Pegawai"
 }
 
 export const English = {
@@ -247,5 +248,6 @@ export const English = {
     "session-salary": "Session Salary",
     "skill": "Skills",
     "profile": "Profile",
-    "teaching salary": "Teaching Salary"
+    "teaching salary": "Teaching Salary",
+    "employee": "Employee"
 }

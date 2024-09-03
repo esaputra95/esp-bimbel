@@ -1,40 +1,42 @@
 import { SubmitHandler, useForm } from "react-hook-form"
-import { ForgotPasswordInterface } from "../../../interfaces/loginInterface"
+import { ChangePasswordInterface } from "../../../interfaces/loginInterface"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { forgotPasswordModel } from "../../models/auth/forgotPasswordModel"
+import { changePasswordModel } from "../../models/auth/forgotPasswordModel"
 import { useMutation } from "@tanstack/react-query"
 import url from "../../../services/url"
 
-const useForgotPassword = () => {
+const useChangePassword = () => {
     const { auth } = url
     const {
         register,
         handleSubmit,
         setError,
         formState: { errors },
-    } = useForm<ForgotPasswordInterface>({
+    } = useForm<ChangePasswordInterface>({
         resolver: yupResolver(
             yup.object({
-                email: yup.string().required()
+                password: yup.string().required(),
+                newPassword: yup.string().required(),
+                confirmNewPassword: yup.string().required(),
             })
         )
     });
 
     const { mutate } = useMutation({
-        mutationFn: async ( data:ForgotPasswordInterface ) => await forgotPasswordModel(auth.forgotPassword, data),
+        mutationFn: async ( data:ChangePasswordInterface ) => await changePasswordModel(auth.changePassword, data),
         onSuccess: (data)=> {
             console.log({data});
             
             if(!data.status){
-                setError('email', {
-                    message:'Kamu memasukkan email yang salah'
+                setError('password', {
+                    message:'Kamu memasukkan password yang salah'
                 })
             }
         }
     })
 
-    const onSubmit: SubmitHandler<ForgotPasswordInterface> = (data) => {
+    const onSubmit: SubmitHandler<ChangePasswordInterface> = (data) => {
         console.log({data});
         
         mutate(data)
@@ -48,4 +50,4 @@ const useForgotPassword = () => {
     }
 }
 
-export default useForgotPassword
+export default useChangePassword

@@ -120,7 +120,7 @@ const HomePage = () => {
                             ): null
                         }
                         {
-                            token?.userType === "admin" ? ( 
+                            token?.userType === "admin" || token?.userType === "employee" ? ( 
                                 <div className='w-full flex flex-col h-36 rounded-lg shadow-md justify-between bg-blue-500'>
                                     <div className='flex items-center '>
                                         <div className='w-full flex flex-col m-4'>
@@ -140,7 +140,7 @@ const HomePage = () => {
                             ) : null
                         }
                         {
-                            token?.userType === "admin" ? ( 
+                            token?.userType === "admin" || token?.userType === "employee" ? ( 
                                 <div className='w-full flex flex-col h-36 rounded-lg shadow-md justify-between bg-lime-600'>
                                     <div className='flex items-center '>
                                         <div className='w-full flex flex-col m-4'>
@@ -160,7 +160,7 @@ const HomePage = () => {
                             ) : null
                         }
                         {
-                            token?.userType === "admin" ? ( 
+                            token?.userType === "admin" || token?.userType === "employee" ? ( 
                                 <div className='w-full flex flex-col h-36 rounded-lg shadow-md justify-between bg-purple-300'>
                                     <div className='flex items-center '>
                                         <div className='w-full flex flex-col m-4'>

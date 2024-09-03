@@ -43,11 +43,10 @@ const LoginPage = () => {
                             >
                                 Login
                             </Button>
-                            <label
-                                onClick={()=>{}}
+                            <a href='/forgot-password'
                                 className='font-light text-sm text-gray-700'>
                                 Lupa password?
-                            </label>
+                            </a>
                         </div>
                     </form>
                 </div>

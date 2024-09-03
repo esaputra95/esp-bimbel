@@ -30,7 +30,8 @@ export interface TutorSearchInterface {
 
 export enum UserType {
     admin="admin", 
-    tentor="tentor"
+    tentor="tentor",
+    employee="employee",
 }
 
 export type TutorFormProps = {

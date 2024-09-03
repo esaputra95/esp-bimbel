@@ -6,3 +6,8 @@ export interface LoginInterface {
 export interface ForgotPasswordInterface {
     email: string
 }
+export interface ChangePasswordInterface {
+    password: string,
+    newPassword: string,
+    confirmNewPassword: string,
+}

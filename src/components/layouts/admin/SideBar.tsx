@@ -73,6 +73,7 @@ const SideBarLayout = () => {
 			<List>
 				<ListItem 
 					className={`${token?.userType==="admin" 
+						|| token?.userType === "employee"
 						|| token?.userType === "tentor"? `flex`: 'hidden'}`
 					} 
 					onClick={()=>handleOnClickMenu('dashboard')}>
@@ -87,13 +88,13 @@ const SideBarLayout = () => {
 						<ChevronDownIcon
 						strokeWidth={2.5}
 						className={`mx-auto h-4 w-4 transition-transform 
-							${token?.userType==="admin" ? 'flex':'hidden'}
+							${token?.userType==="admin" || token?.userType==="employee" ? 'flex':'hidden'}
 							${open === 'master-data' ? "rotate-180" : ""}`
 						}
 						/>
 					}
 				>
-					<ListItem className={`p-0 ${token?.userType==="admin" ? 'flex':'hidden'}`} selected={open === 'master-data'}>
+					<ListItem className={`p-0 ${token?.userType==="admin" || token?.userType === "employee" ? 'flex':'hidden'}`} selected={open === 'master-data'}>
 						<AccordionHeader onClick={() => handleOpen('master-data')} className="border-b-0 p-3">
 							<ListItemPrefix>
 								<InboxIcon className="h-5 w-5" />
@@ -130,13 +131,13 @@ const SideBarLayout = () => {
 						<ChevronDownIcon
 						strokeWidth={2.5}
 						className={`mx-auto h-4 w-4 transition-transform 
-							${token?.userType==="admin" ? 'flex':'hidden'}
+							${token?.userType==="admin" || token?.userType === "employee" ? 'flex':'hidden'}
 							${open === 'registration' ? "rotate-180" : ""}`
 						}
 						/>
 					}
 				>
-					<ListItem className={`p-0 ${token?.userType==="admin" ? 'flex':'hidden'}`} selected={open === 'registration'}>
+					<ListItem className={`p-0 ${token?.userType==="admin" || token?.userType === "employee" ? 'flex':'hidden'}`} selected={open === 'registration'}>
 						<AccordionHeader onClick={() => handleOpen('registration')} className="border-b-0 p-3">
 							<ListItemPrefix>
 								<ListBulletIcon className="h-5 w-5" />
@@ -215,7 +216,7 @@ const SideBarLayout = () => {
 						<ChevronDownIcon
 							strokeWidth={2.5}
 							className={`mx-auto h-4 w-4 transition-transform 
-								${token?.userType==="admin" || token?.userType==="tentor" ? 'flex':'hidden'}
+								${token?.userType==="admin" || token?.userType==="tentor" || token?.userType === "employee" ? 'flex':'hidden'}
 								${open === 'record-materi' ? "rotate-180" : ""}`
 							}
 						/>
@@ -265,7 +266,7 @@ const SideBarLayout = () => {
 						/>
 					}
 				>
-					<ListItem className="p-0" selected={open === 'payroll'}>
+					<ListItem className={`p-0 ${token?.userType==="admin" || token?.userType === "tentor" ? 'flex':'hidden'}`} selected={open === 'payroll'}>
 						<AccordionHeader onClick={() => handleOpen('payroll')} className="border-b-0 p-3">
 							<ListItemPrefix>
 								<CalendarDaysIcon className="h-5 w-5" />
@@ -303,13 +304,13 @@ const SideBarLayout = () => {
 						<ChevronDownIcon
 						strokeWidth={2.5}
 						className={`mx-auto h-4 w-4 transition-transform 
-							${token?.userType==="admin" ? 'flex':'hidden'}
+							${token?.userType==="admin" || token?.userType === "employee" ? 'flex':'hidden'}
 							${open === 'master-reports'? "rotate-180" : ""}
 						`}
 						/>
 					}
 				>
-					<ListItem className={`p-0 ${token?.userType==="admin" ? 'flex':'hidden'}`} selected={open === 'master-reports'}>
+					<ListItem className={`p-0 ${token?.userType==="admin" || token?.userType === "employee" ? 'flex':'hidden'}`} selected={open === 'master-reports'}>
 						<AccordionHeader onClick={() => handleOpen('master-reports')} className="border-b-0 p-3">
 							<ListItemPrefix>
 								<DocumentTextIcon className="h-5 w-5" />
@@ -326,6 +327,7 @@ const SideBarLayout = () => {
 									<ListItem 
 										selected={selector.menu === value.path ? true : false} 
 										key={Math.random()} onClick={()=>handleOnClickMenu(value.path)}
+										className={`${value.access.includes(token?.userType??'') ? 'flex': 'hidden'}`}
 									>
 										<ListItemPrefix>
 											<ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
@@ -338,7 +340,7 @@ const SideBarLayout = () => {
 					</AccordionBody>
 				</Accordion>
 				{
-					token?.userType === "admin" ? <hr className="my-2 border-blue-gray-50" /> : null 
+					token?.userType === "admin" || token?.userType === "employee" ? <hr className="my-2 border-blue-gray-50" /> : null 
 				}
 				<Accordion
 					open={open === 'settings'}
@@ -346,13 +348,13 @@ const SideBarLayout = () => {
 						<ChevronDownIcon
 						strokeWidth={2.5}
 						className={`mx-auto h-4 w-4 transition-transform 
-							${token?.userType==="admin" ? 'flex':'hidden'}
+							${token?.userType==="admin" || token?.userType === "employee" ? 'flex':'hidden'}
 							${open === 'settings' ? "rotate-180" : ""}`
 						}
 						/>
 					}
 				>
-					<ListItem className={`p-0 ${token?.userType==="admin" ? 'flex':'hidden'}`} selected={open === 'settings'}>
+					<ListItem className={`p-0 ${token?.userType==="admin" || token?.userType === "employee" ? 'flex':'hidden'}`} selected={open === 'settings'}>
 						<AccordionHeader onClick={() => handleOpen('settings')} className="border-b-0 p-3">
 							<ListItemPrefix>
 								<Cog6ToothIcon className="h-5 w-5" />

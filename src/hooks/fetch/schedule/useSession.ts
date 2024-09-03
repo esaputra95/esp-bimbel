@@ -114,7 +114,7 @@ export const useSession = () => {
     
     const {data:dataSession, isFetching, refetch} = 
     useQuery<ApiResponseSession, AxiosError>({ 
-        queryKey: ['schedule'], 
+        queryKey: ['schedule', page.page], 
         networkMode: 'always',
         refetchOnWindowFocus: false,
         queryFn: async () => await getData(SessionSchedule.get, 
