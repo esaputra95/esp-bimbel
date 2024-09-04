@@ -35,7 +35,7 @@ const Filter: FC<FilterType> = (props) => {
         <div className='w-full'>
             <div className='w-full lg:grid lg:grid-cols-4 lg:gap-4'>
                 {
-                    token?.userType === "admin" ? (
+                    token?.userType === "admin" || token?.userType === "employee" ? (
                         <div className='w-full'>
                             <LabelInput>
                                 {t('tutors')}

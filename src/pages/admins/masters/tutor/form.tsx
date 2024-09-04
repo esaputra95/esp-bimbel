@@ -6,6 +6,7 @@ import Spinner from '../../../../components/ui/Spinner';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { Controller } from 'react-hook-form';
 import AsyncSelect from 'react-select/async';
+import useAccess from '../../../../utils/useAccess';
 
 const FormTutor: FC<TutorFormProps> = (props) => {
     const { 
@@ -24,6 +25,10 @@ const FormTutor: FC<TutorFormProps> = (props) => {
         optionCourse,
         getValues
     } = props;
+
+    const {
+        token
+    } = useAccess()
 
     const {t} = useTranslation()
     
@@ -74,17 +79,33 @@ const FormTutor: FC<TutorFormProps> = (props) => {
                     readOnly={idDetail?true:false} 
                     label={t("address")} 
                 />
-                <SelectOption 
-                    {...register('userType')}
-                    label={t('access-level')}
-                    option={[
-                        {label:'Super Admin /Owner', value: 'admin'},
-                        {label:t('tutor'), value: 'tentor'},
-                        {label:t('Admin'), value: 'employee'}
-                    ]}
-                    disabled={idDetail?true:false}
-                    errors={errors.userType?.message}
-                />
+                {
+                    token?.userType === "admin" ? (
+                        <SelectOption 
+                            {...register('userType')}
+                            label={t('access-level')}
+                            option={[
+                                {label:'Super Admin /Owner', value: 'admin'},
+                                {label:t('tutor'), value: 'tentor'},
+                                {label:t('Admin'), value: 'employee'}
+                            ]}
+                            disabled={idDetail?true:false}
+                            errors={errors.userType?.message}
+                        />
+                    ) : (
+                        <SelectOption 
+                            {...register('userType')}
+                            label={t('access-level')}
+                            option={[
+                                {label:t('tutor'), value: 'tentor'},
+                                {label:t('Admin'), value: 'employee'}
+                            ]}
+                            disabled={idDetail?true:false}
+                            errors={errors.userType?.message}
+                        />
+                    )
+                }
+                
             </div>
             <div className='border-t border-gray-400 mt-4' />
             
