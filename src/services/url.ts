@@ -2,7 +2,7 @@ const url = {
     auth: {
         login:'auth/login',
         forgotPassword: 'auth/forgot-password',
-        changePassword: 'auth/change-password',
+        changePassword: 'users/change-password',
     },
     users: 'users',
     profiles: 'profiles',

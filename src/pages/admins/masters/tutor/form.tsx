@@ -78,9 +78,9 @@ const FormTutor: FC<TutorFormProps> = (props) => {
                     {...register('userType')}
                     label={t('access-level')}
                     option={[
-                        {label:'Admin', value: 'admin'},
+                        {label:'Super Admin /Owner', value: 'admin'},
                         {label:t('tutor'), value: 'tentor'},
-                        {label:t('employee'), value: 'employee'}
+                        {label:t('Admin'), value: 'employee'}
                     ]}
                     disabled={idDetail?true:false}
                     errors={errors.userType?.message}
