@@ -60,17 +60,17 @@ const useRegister = () => {
         setLoading(true);
         if(data.imageUpload){
             const upload = await uploadImage(data.imageUpload)
-            if(upload){
+            // if(upload){
                 mutate({
                     ...data,
                     image: upload
                 })
-            } else {
-                setLoading(false)
-                toast.error('Photo yang kamu pilih tidak sesuai, mohon baca ketentuan upload Photo', {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            }
+            // } else {
+            //     setLoading(false)
+            //     toast.error('Photo yang kamu pilih tidak sesuai, mohon baca ketentuan upload Photo', {
+            //         position: toast.POSITION.TOP_CENTER
+            //     });
+            // }
         }else{
             setLoading(false)
             toast.error('Photo yang kamu pilih tidak sesuai, mohon baca ketentuan upload Photo', {

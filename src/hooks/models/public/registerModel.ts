@@ -41,7 +41,7 @@ const uploadImage = async (data:any) => {
 		const upload = await apiImage.post('registers/images', formData);
 		return upload.data.data;
 	} catch (error) {
-		throw error as AxiosError;
+		return '';
 	}
 }
 
