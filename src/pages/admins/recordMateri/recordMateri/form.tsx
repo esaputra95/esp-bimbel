@@ -53,7 +53,7 @@ const FormRecordMateri: FC<RecordMateriFormProps> = (props) => {
                     max={new Date().toISOString().split('T')[0]}
                 />
                 {
-                    token?.userType === "admin" ? (
+                    token?.userType === "admin" || token?.userType === "employee" ? (
                         <div className='w-full'>
                             <LabelInput>{t("tutors")}</LabelInput>
                             <Controller
