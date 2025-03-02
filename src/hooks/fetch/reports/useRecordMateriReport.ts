@@ -124,7 +124,7 @@ const useRecordMateriReport = () => {
             styles:{halign:'left'},
             body: data??'',
         })
-        doc.save('LAPORAN RECORD MATERI.pdf')
+        doc.save(`${getValues('student.label') ?? 'LAPORAN RECORD MATERI'}.pdf`)
     }
 
     const onDownload: SubmitHandler<RecordMateriReport> = (data) => {

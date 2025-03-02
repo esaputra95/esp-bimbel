@@ -26,6 +26,7 @@ const ClassInformationPage = () => {
                 handleOnSearch={handleOnSearch}
             />
             <TableClassInformation 
+                query={query}
                 dataClassInformation={dataClassInformation}
             />
         </div>
