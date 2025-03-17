@@ -20,9 +20,15 @@ type Room = {
     title:string;
 }
 
-type Event = {
+export type EventCalender = {
     id:string;
     title: string;
+    extendedProps: {
+        group: string;
+        course: string;
+        room: string
+    },
+    
     start:string;
     end:string;
     resourceId:string
@@ -30,7 +36,7 @@ type Event = {
 
 export interface StudyGroup {
     room: Room[];
-    event: Event[]
+    event: EventCalender[]
 }
 
 

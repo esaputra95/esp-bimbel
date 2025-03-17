@@ -58,7 +58,7 @@ const Table: FC<TableProps> = (props) => {
                                     {(number+index+1)}
                                 </th>
                                 <td className="px-6 py-4">
-                                    {moment(value.date).format('DD/MM/YYYY')}
+                                    {moment(value.date).format('DD/MM/YYYY hh:mm')}
                                 </td>
                                 <td className="px-6 py-4">
                                     {value.userTentor?.name ?? ''}

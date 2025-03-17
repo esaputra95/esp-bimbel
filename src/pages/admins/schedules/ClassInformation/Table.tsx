@@ -1,7 +1,8 @@
 import { FC, useEffect, useRef } from "react";
-import { ClassInformationInterface, StudyGroup } from "../../../../interfaces/schedule/ClassInformationInterface";
+import { ClassInformationInterface, EventCalender, StudyGroup } from "../../../../interfaces/schedule/ClassInformationInterface";
 import FullCalendar from "@fullcalendar/react";
 import resourceTimeGridPlugin from "@fullcalendar/resource-timegrid";
+import './calender.css'
 
 type TableType = {
     dataClassInformation: StudyGroup;
@@ -23,11 +24,10 @@ const TableClassInformation: FC<TableType> = (props) => {
             calendarApi.gotoDate(query.startDate); // Ganti tanggal sesuai query.startDate
         }
     }, [query?.startDate]);
-
+    
 
     return (
-        <div className="w-full">
-            {query?.startDate}
+        <div className="w-full overflow-auto">
         <FullCalendar
             ref={calendarRef}
             plugins={[resourceTimeGridPlugin]}
@@ -36,8 +36,17 @@ const TableClassInformation: FC<TableType> = (props) => {
             events={dataClassInformation.event}
             businessHours={businessHours}
             slotDuration="00:30:00"
-            locale="en-GB"
+            locale="id-ID"
             initialDate={query?.startDate}
+            contentHeight={600}
+            // slotDuration="00:15:00" // Ubah grid jadi per 15 menit
+            slotLabelInterval="00:15:00" // Label muncul tiap 15 menit
+            slotLabelFormat={{
+                hour: "2-digit",
+                minute: "2-digit",
+                omitZeroMinute: false,
+                meridiem: false,
+            }}
             headerToolbar={{
                 left: "prev,next",
                 center: "title",
@@ -54,16 +63,16 @@ const TableClassInformation: FC<TableType> = (props) => {
     );
 };
 
-function renderEventContent(eventInfo: {timeText: string, event: {title: string}}) {
+function renderEventContent(eventInfo: {timeText: string, event: EventCalender}) {
     return (
-        <div className="flex justify-between">
-        <div>
-            {" "}
-            <strong className="text-xs font-light">{eventInfo.timeText}</strong>
-            <br />
-            <span>{eventInfo.event.title}</span>
-            <br />
-        </div>
+        <div className="flex flex-col text-center overflow-auto">
+        {/* <div className="flex flex-col"> */}
+            <strong className="text-xs font-extralight">{eventInfo?.timeText}</strong>
+            <span className="text-xs font-extralight">{eventInfo?.event?.title}</span>
+            <span className="text-xs font-extralight">{eventInfo?.event?.extendedProps?.group}</span>
+            <span className="text-xs font-extralight">{eventInfo?.event?.extendedProps?.course}</span>
+            <span className="text-xs font-extralight">{eventInfo?.event?.extendedProps?.room}</span>
+        {/* </div> */}
         </div>
     );
 }
