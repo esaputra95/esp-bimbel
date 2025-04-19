@@ -183,7 +183,7 @@ const FormRecordMateri: FC<RecordMateriFormProps> = (props) => {
                                     name={`detail.${index}.description`}
                                     control={control}
                                     render={({ field }) => 
-                                        <textarea rows={3} 
+                                        <textarea rows={8} 
                                             className='resize-none block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' 
                                             {...field} 
                                     />}

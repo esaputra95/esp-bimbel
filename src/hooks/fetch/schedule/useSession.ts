@@ -467,6 +467,7 @@ export const useSession = () => {
         key: keyof TimeForm,
         value: string
     ) => {
+        setDataOptionRoom([])
         setValue(`time.${index}.${key}`, value)
         const status = await checkSession(SessionSchedule.checkSchedule, {
             date: getValues(`time.${index}.date`),
