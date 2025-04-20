@@ -106,7 +106,7 @@ export const Indonesia = {
     "confirm": "Konfirmasi",
     "cancel-confirm": "Batalkan Konfirmasi",
     "study-location": "Lokasi Belajar",
-    "companies": "Perusahaan",
+    "companies": "Data Perusahaan",
     "company-name": "Nama Perusahan",
     "postal-code": "Kode POS",
     "hotline": "Hotline",
