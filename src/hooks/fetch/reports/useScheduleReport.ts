@@ -160,8 +160,11 @@ const useScheduleReport = () => {
             styles:{halign:'center'},
             body: data??'',
         })
-        
-        doc.save('Laporan Jadwal Siswa.pdf')
+        if(getValues('student.label')){
+            doc.save(`Laporan Jadwal ${getValues('student.label')}.pdf`)
+        }else{
+            doc.save(`Laporan Jadwal Siswa.pdf`)
+        }
     }
 
     const onDownload: SubmitHandler<ScheduleReport> = (data) => {
